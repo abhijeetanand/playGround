@@ -1,0 +1,27 @@
+<properties>
+    <attributes name="project.type" value="js"/>
+    <attributes name="appversionkey" value="1.0.0"/>
+    <attributes name="mwportkey" value="80"/>
+    <attributes name="andtargetsdkkey" value="2.3"/>
+    <attributes name="isNewAppWithRespectToAndroidPackageName" value="true"/>
+    <attributes name="mwaddrkey" value="169.254.80.80"/>
+    <attributes name="createdgaversion" value="5.6.0"/>
+    <attributes name="build" value="debug"/>
+    <attributes name="apppackagekey" value="com.orgname.WorkerP0TestSQL"/>
+    <attributes name="iosrespectimagesizecorrection" value="true"/>
+    <attributes name="startupformkey" value="frmHome"/>
+    <attributes name="win6xj2meonlysupported" value="false"/>
+    <attributes name="SELECTED_THEME" value="default"/>
+    <attributes name="winmangotiletitlekey" value="WorkerP0TestSQL"/>
+    <attributes name="iphonebundleidentifierkey" value="com.kony.WorkerP0TestSQL"/>
+    <attributes name="appidkey" value="WorkerP0TestSQL"/>
+    <attributes name="currentgaversion" value="5.6.2.QA_v201407081855_r13"/>
+    <attributes name="ioscheckboxcorrection" value="true"/>
+    <attributes name="mwhttpsportkey" value="443"/>
+    <attributes name="iostextboxpaddingcorrection" value="true"/>
+    <attributes name="vendornamekey" value="KonyLabs"/>
+    <attributes name="marginsincludedinwidgetcontainerweight" value="true"/>
+    <attributes name="iospopuptransitioncorrection" value="true"/>
+    <attributes name="appnamekey" value="WorkerP0TestSQL"/>
+    <attributes name="APPLICATION_THEME" value="default"/>
+</properties>

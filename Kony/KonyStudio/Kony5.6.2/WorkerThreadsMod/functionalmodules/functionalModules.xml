@@ -1,0 +1,59 @@
+<!--/**
+views : list of ids of forms, popups, templates (seg,datagrid, header, footer... etc)  - Optional
+jsModules : js modules required for this functional module, - Optional
+dependentModules : Other functional modules required for this module. - Optional
+
+Either forms or modules should be provided for a module.
+**/-->
+<functionalModules projectName="TestingWorkers">
+   
+   <functionalModule name="parentm1" loadOnStartUp="true">
+   <views>frmModules</views>
+	<jsModules>Modules001ParentThread.js,Modules002ParentThread.js,Modules003ParentThread.js,Modules004ParentThread.js,Modules005ParentThread.js ,Modules006ParentThread.js,Modules007ParentThread.js,Modules008ParentThread.js</jsModules>
+   </functionalModule>
+   <functionalModule name="parentm2" >
+   	<jsModules>ModulesParent.js</jsModules>
+   </functionalModule>
+    <functionalModule name="m1">
+      <jsModules>workerthreads/Modules001WorkerThread.js ,workerthreads/Modules001WorkerThread1.js</jsModules>
+   </functionalModule>
+   <functionalModule name="m2">
+      <jsModules>workerthreads/Modules001WorkerThread2.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m3">
+      <jsModules>workerthreads/Modules002WorkerThread.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m4">
+      <jsModules>workerthreads/Modules003WorkerThread.js ,workerthreads/Modules003WorkerThread1.js</jsModules>
+   </functionalModule>
+   <functionalModule name="m5">
+      <jsModules>workerthreads/Modules003WorkerThread2.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m6">
+      <jsModules>workerthreads/Modules004WorkerThread.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m7">
+      <jsModules>workerthreads/Modules006WorkerThread.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m8">
+      <jsModules>workerthreads/Modules006WorkerThread1.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m9">
+      <jsModules>workerthreads/Modules007WorkerThread.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m10">
+      <jsModules>workerthreads/Modules007WorkerThread1.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m11">
+      <jsModules>workerthreads/Modules007WorkerThread2.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m12">
+      <jsModules>workerthreads/Modules008WorkerThread.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m13">
+      <jsModules>workerthreads/Modules008WorkerThread1.js </jsModules>
+   </functionalModule>
+   <functionalModule name="m14">
+      <jsModules>workerthreads/Modules008WorkerThread2.js </jsModules>
+   </functionalModule>
+</functionalModules>

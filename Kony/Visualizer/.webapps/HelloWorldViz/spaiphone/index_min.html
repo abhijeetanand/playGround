@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+                 <meta name="format-detection" content="telephone=no" />
+                 <meta name="format-detection" content="address=no" />
+            <script type= "text/javascript">
+                    IndexJL = 0;
+            </script>
+            <script type="text/javascript"> 
+		    			if(document.getElementById && document.createElement){
+				document.write("<style>html {display: none;}</style><script>if( self == top ){document.documentElement.style.display = 'block';} else {top.location = self.location;}</sc"+"ript>");
+			}else{
+				if (top != self){
+					top.location = self.location;
+				}
+			}
+		    </script>
+            <style>
+				@-webkit-keyframes FadeIn { 0% { opacity:0; } 100% { opacity:1; } }
+               .splashscreen 
+               {
+                    position: fixed !important;
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    left: 0px;
+                    bottom: 0px;
+                    background-color: #ffffff;
+                }
+                .splashscreen2
+                {
+                    text-align: center;
+                }
+                .splashscreen-image 
+                {
+                    -webkit-animation-name: FadeIn;
+                    -webkit-animation-timing-function: ease-in;
+                    -webkit-animation-duration: 1.5s;
+				    width:100%;
+                    height:100%;
+                }
+           </style>
+                <meta name="apple-mobile-web-app-capable" content="yes"/>
+                <link rel="stylesheet" type="text/css" href="spaiphone/konyspaiphone.css?ver=1.0.0" media="screen" />
+            <link rel="stylesheet" type="text/css" href="spaiphone/jslib/tparty/cal/container.css" />
+            <link rel="stylesheet" type="text/css" href="spaiphone/jslib/tparty/cal/calendar.css" />
+                <title>Project0b0cd6</title>
+    </head>
+    <body>
+        <!-- <noscript style="position:absolute;background:white;">To use this site, first enable your browser;kqt;s JavaScript support and then refresh this page.</noscript> -->
+    	<style>
+			#__JSDisabledErrorMsg{display:none;}
+		</style>
+		<noscript>
+			<style>
+				#__JSDisabledErrorMsg{display:block;}
+			</style>
+		</noscript>
+		<div id="__JSDisabledErrorMsg" style="position:absolute;background:white;">To use this site, first enable your browser;kqt;s JavaScript support and then refresh this page.</div>
+        <script type="text/javascript" >
+            IndexJL = 0;
+            initappcache ();
+                    function initappcache ()
+                    {                
+                        isWindowsPhone= (/Windows Phone/gi).test(navigator.userAgent);
+                        isWindowsTouch =(/Windows/gi).test(navigator.userAgent) && (/Touch/gi).test(navigator.userAgent);
+                        isWindowsTablet = (/Windows NT/gi).test(navigator.userAgent) && (/Touch/gi).test(navigator.userAgent);
+                        if (document.documentElement.getAttribute("manifest") && !! window.applicationCache) {
+                                var a = ["checking", "downloading", "progress", "cached", "noupdate", "updateready", "obsolete", "error"];
+                                for (var d = 0; d < a.length; d++) {
+                                        window.applicationCache.addEventListener(a[d],appcacheeventhndlr, false)
+                                }
+                        } else {
+                                loadKonyframework();
+                        }
+                    }
+                    function appcacheeventhndlr(event)
+                    {
+                        if(!event)
+                                event = window.event;
+                        switch (event.type) {
+                                case "checking":
+                                        console.log("Checking for Manifest Version");
+                                        break;
+                                case "downloading":						
+                                        console.log("Downloading of Manifest Resources");
+                                        break;
+                                case "progress":
+                                        break;
+                                case "cached":
+                                        console.log("Manifest Resources loading done");
+                                        loadKonyframework();
+                                        break;
+                                case "noupdate":
+                                        console.log("No Change in Manifest File");
+                                        loadKonyframework();
+                                        break;
+                                case "updateready":
+                                        console.log("New manifest resources downloaded,swap the cache");
+                                        window.applicationCache.swapCache();
+                                        loadKonyframework();
+                                        break;
+                                case "obsolete":
+                                        console.log("Cache Manifest file not found. So deleting app cache");
+                                        break;
+                                case "error":
+                                        console.log("Error while loading app cache");
+                                        loadKonyframework();
+                                        break;
+                                default:
+                                        console.log("Appcache Event not supported");
+                        }		
+                    }
+                    function initializeframework() 
+                    {				
+                        kony.appinit.prepareHttpHeaders();
+                        kony.appinit.setPlatformName();
+                        kony.appinit.mergeDownloadLists();				
+                        $KG["version"] = "1.0.0";
+                        $KG["skipproxy"] = true;			
+                        kony.appinit.verifyhref(true);		
+                    }
+                    function loadKonyframework() 
+                    {	
+                        addScript("jslib/konyframework.js");
+                    }
+                    function loadappjs() 
+                    {	
+                        addScript("appjs/app.js");
+                    }
+                    function addScript (src) 
+                    {
+                        var head =  document.getElementsByTagName('head')[0];						
+                        var	script = document.createElement('script');
+                        script.src = "spaiphone/" + src;
+                        script.type = "text/javascript";
+                       if(src ==="appjs/app.js" ){
+                            if(!script.addEventListener) {
+                                script.onreadystatechange = function(){
+                                        (this.readyState == 'complete' || this.readyState == 'loaded') && initializeframework();
+                                };
+                            }
+                            else {
+                                script.onload = initializeframework;
+                            }
+                        }		
+                        else{							
+                            if(!script.addEventListener) {
+                                script.onreadystatechange = function(){
+                                        (this.readyState == 'complete' || this.readyState == 'loaded') && loadappjs();
+                                };
+                            }
+                            else {
+                                script.onload = loadappjs;
+                            }
+                        }	
+                        head.appendChild(script);   
+                    }
+        </script>
+    </body>
+</html>

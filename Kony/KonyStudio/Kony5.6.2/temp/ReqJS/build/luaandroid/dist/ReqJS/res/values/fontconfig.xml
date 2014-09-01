@@ -1,0 +1,10 @@
+
+    <resources>
+    	 <!-- default base font --> 
+    	<item type="fonts" name="font_size">14</item>
+    	 <!-- Default font weight. supported values normal/bold --> 
+        <item type="fonts" name="font_weight">normal</item>
+         <!-- Default font style. supported values none/italic/underline --> 
+        <item type="fonts" name="font_style">none</item>
+        <item type="fonts" name="anti_aliasing">false</item>
+    </resources>

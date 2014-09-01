@@ -1,0 +1,13 @@
+{
+    "@class": "com.kony.gen.skin.model.KVizSkin",
+    "background_color": "ffffff",
+    "bg_type": "one",
+    "font_color": "333333",
+    "font_name": "Arial, Helvetica, sans-serif",
+    "font_size": "100",
+    "font_weight": "normal",
+    "isDefaultSkin": true,
+    "kuid": "4d94f5ffea4f4a2d9a7e8852d3973347",
+    "platforms": {},
+    "wType": "TitleBar"
+}

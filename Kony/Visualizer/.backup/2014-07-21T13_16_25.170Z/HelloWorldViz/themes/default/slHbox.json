@@ -1,0 +1,13 @@
+{
+    "@class": "com.kony.gen.skin.model.KVizSkin",
+    "background_color": "000000ff",
+    "bg_type": "one",
+    "border_color": "00000000",
+    "border_style": "plain",
+    "border_type": 0,
+    "border_width": 0,
+    "isDefaultSkin": true,
+    "kuid": "90c66c518ef64aa39ea999458a9542be",
+    "platforms": {},
+    "wType": "HBox"
+}

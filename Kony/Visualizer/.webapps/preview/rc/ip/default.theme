@@ -1,0 +1,123 @@
+{
+    "slHbox": {
+        "wType": "HBox",
+        "bg_type": "one",
+        "border_color": "00000000",
+        "border_style": "plain",
+        "border_width": 0,
+        "border_type": 0,
+        "background_color": "00000064"
+    },
+    "slButtonGlossBlue": {
+        "wType": "Button",
+        "bg_type": "ms_gradient",
+        "border_color": "ffffff00",
+        "border_style": "plain",
+        "border_width": 0,
+        "border_type": 0,
+        "font_color": "ffffff00",
+        "font_name": "Helvetica",
+        "font_size": 148,
+        "font_style": "normal",
+        "font_weight": "normal",
+        "background_color": {
+            "angle": 0,
+            "colors": ["56a9dd00", "3a83a700", "4aa8d100"],
+            "cs": [0, 50, 100],
+            "gt": "linear"
+        },
+        "background_style": "linear",
+        "shadow": {
+            "br": 2,
+            "color": "00000019",
+            "ignoredPart": {
+                "br": 2,
+                "color": "ffffffbf",
+                "inner": true,
+                "nm": 0,
+                "x": 0,
+                "y": 1
+            },
+            "inner": false,
+            "nm": 0,
+            "x": 0,
+            "y": 2
+        },
+        "text_shadow": {
+            "br": 0,
+            "color": "0000003c",
+            "x": 0,
+            "y": -1
+        }
+    },
+    "slButtonGlossRed": {
+        "wType": "Button",
+        "bg_type": "ms_gradient",
+        "border_color": "ffffff00",
+        "border_style": "plain",
+        "border_width": 0,
+        "border_type": 0,
+        "font_color": "ffffff00",
+        "font_name": "Helvetica",
+        "font_size": 148,
+        "font_style": "normal",
+        "font_weight": "normal",
+        "background_color": {
+            "angle": 0,
+            "colors": ["d62c3a00", "bd142100", "dd878d00"],
+            "cs": [0, 50, 100],
+            "gt": "linear"
+        },
+        "background_style": "linear",
+        "shadow": {
+            "br": 2,
+            "color": "00000019",
+            "ignoredPart": {
+                "br": 2,
+                "color": "ffffffbf",
+                "inner": true,
+                "nm": 0,
+                "x": 0,
+                "y": 1
+            },
+            "inner": false,
+            "nm": 0,
+            "x": 0,
+            "y": 2
+        },
+        "text_shadow": {
+            "br": 0,
+            "color": "0000003c",
+            "x": 0,
+            "y": -1
+        }
+    },
+    "slImage": {
+        "wType": "Image",
+        "bg_type": "one",
+        "border_color": "00000000",
+        "border_style": "plain",
+        "border_width": 0,
+        "border_type": 0,
+        "font_color": "00000000",
+        "font_name": "Helvetica",
+        "font_size": 156,
+        "font_style": "normal",
+        "font_weight": "normal",
+        "background_color": "00000064"
+    },
+    "slForm": {
+        "wType": "Form",
+        "bg_type": "one",
+        "background_color": "7e7e7e00"
+    },
+    "slTitleBar": {
+        "wType": "TitleBar",
+        "bg_type": "one",
+        "font_color": "33333300",
+        "font_name": "Arial, Helvetica, sans-serif",
+        "font_size": 100,
+        "font_weight": "normal",
+        "background_color": "ffffff00"
+    }
+}

@@ -1,0 +1,24 @@
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes.dex : \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/konylabs/js/appsrc/PaaSLicenseSource.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/BuildConfig.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$anim.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$attr.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$drawable.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$fonts.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$id.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$layout.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$location.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$net.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$string.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R$style.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/R.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/classes/com/orgname/ReqJS/ReqJS.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/dexedLibs/konychart2d3dinterface-787b62e3237ff748f9bbb22f7ac886c8.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/dexedLibs/annotations-d20d5f024a30e717276a4eec9bf45fde.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/dexedLibs/multiparthttppost-f28cd336703208545ebcb790f55424c1.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/dexedLibs/konycontacts-6678ee15594452d5ea9087952a2a7d53.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/dexedLibs/konychartinterface-5097227687ac8d7fd6422f58abe05667.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/dexedLibs/konychart2d3dinterfaceNeXt-2468886cd260d808cf319117779a40bd.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/dexedLibs/konywidgets-ebb23a5456329cb2eff031d228495cc7.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/dexedLibs/konyweb-6d5040b96f65239e40f3f591660f958a.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6.2/temp/ReqJS/build/luaandroid/dist/ReqJS/bin/dexedLibs/android-support-v4-23e98b50eba3f1acfaf28ec66fd83cb1.jar \

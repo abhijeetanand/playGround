@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="pluginstate">
+	<item value="true" key="WTHttpRequestApi.j2mebuild"/>
+	<item value="true" key="FunctionalModule.balckberrybuild"/>
+	<item value="true" key="testApp.winmobilebuild"/>
+	<item value="false" key="ReqJS.apppropmodified"/>
+	<item value="true" key="ReqJS.balckberrybuild"/>
+	<item value="true" key="WTHttpRequestApi.balckberrybuild"/>
+	<item value="false" key="WTHttpRequestApi.winmobilebuild"/>
+	<item value="true" key="ReqJS.j2mebuild"/>
+	<item value="true" key="testApp.balckberrybuild"/>
+	<item value="true" key="testRequire.apppropmodified"/>
+	<item value="true" key="FunctionalModule.j2mebuild"/>
+	<item value="false" key="WTHttpRequestApi.apppropmodified"/>
+	<item value="false" key="FunctionalModule.apppropmodified"/>
+	<item value="false" key="ReqJS.winmobilebuild"/>
+	<item value="false" key="FunctionalModule.winmobilebuild"/>
+	<item value="true" key="testApp.j2mebuild"/>
+	<item value="false" key="testApp.apppropmodified"/>
+</section>

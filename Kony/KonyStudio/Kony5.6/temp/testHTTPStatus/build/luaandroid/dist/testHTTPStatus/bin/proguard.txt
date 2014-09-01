@@ -1,0 +1,9 @@
+# view AndroidManifest.xml #generated:21
+-keep class com.konylabs.android.KonyMapsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:22
+-keep class com.konylabs.android.KonyMapsV2Activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:6
+-keep class com.orgname.testHTTPStatus.testHTTPStatus { <init>(...); }
+

@@ -1,0 +1,11 @@
+OS X SDKs:
+	OS X 10.8                     	-sdk macosx10.8
+	OS X 10.9                     	-sdk macosx10.9
+
+iOS SDKs:
+	iOS 7.1                       	-sdk iphoneos7.1
+
+iOS Simulator SDKs:
+	Simulator - iOS 6.1           	-sdk iphonesimulator6.1
+	Simulator - iOS 7.1           	-sdk iphonesimulator7.1
+

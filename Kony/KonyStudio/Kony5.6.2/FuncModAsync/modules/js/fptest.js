@@ -1,0 +1,4 @@
+function fptestcase()
+{
+alert("alert");
+}

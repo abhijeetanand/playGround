@@ -1,0 +1,101 @@
+{   "slForm":
+    {
+                                            "wtype" : "Form",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "7e7e7e00",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slButtonGlossRed":
+    {
+                                            "wtype" : "Button",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "d62c3a00",
+                                                          "forked" : "iphone,android,ipad,tabrcandroid,spaip,spaan,spaipad,spatabandroid",
+                                                          "font_size" : 148,
+                                                          "font_style" : "normal",
+                                                          "font_color" : "ffffff00",
+                                                          "customcss" : false,
+                                                          "border_color" : "ffffff00",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slTitleBarTablet":
+    {
+                                            "wtype" : "TitleBar",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "ffffff00",
+                                                          "font_style" : "",
+                                                          "font_color" : "33333300",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slHbox":
+    {
+                                            "wtype" : "HBox",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "00000064",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slImage":
+    {
+                                            "wtype" : "Image2",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "00000064",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slButtonGlossBlue":
+    {
+                                            "wtype" : "Button",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "56a9dd00",
+                                                          "forked" : "iphone,android,ipad,tabrcandroid,spaip,spaan,spaipad,spatabandroid",
+                                                          "font_size" : 148,
+                                                          "font_style" : "normal",
+                                                          "font_color" : "ffffff00",
+                                                          "customcss" : false,
+                                                          "border_color" : "ffffff00",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slPopup":
+    {
+                                            "wtype" : "Popup",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "7e7e7e00",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slTitleBar":
+    {
+                                            "wtype" : "TitleBar",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "ffffff00",
+                                                          "font_style" : "",
+                                                          "font_color" : "33333300",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 }

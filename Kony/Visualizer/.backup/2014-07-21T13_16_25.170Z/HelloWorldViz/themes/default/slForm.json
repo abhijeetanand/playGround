@@ -1,0 +1,9 @@
+{
+    "@class": "com.kony.gen.skin.model.KVizSkin",
+    "background_color": "7e7e7e",
+    "bg_type": "one",
+    "isDefaultSkin": true,
+    "kuid": "7ae5039f92c042c78d60458068fd4b28",
+    "platforms": {},
+    "wType": "Form"
+}

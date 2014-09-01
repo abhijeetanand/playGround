@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application id="FunctionalModule" name="FunctionalModule">
+    <container displayname="Popup" id="header1" type="dialog"/>
+    <container displayname="Popup" id="header2" type="dialog"/>
+    <container displayname="Popup" id="header3" type="dialog"/>
+    <container displayname="Popup" id="header4" type="dialog"/>
+    <container displayname="Popup" id="header5" type="dialog"/>
+    <container displayname="Popup" id="header6" type="dialog"/>
+    <container displayname="Popup" id="footer1" type="dialog"/>
+    <container displayname="Popup" id="footer2" type="dialog"/>
+    <container displayname="Popup" id="footer3" type="dialog"/>
+    <container displayname="Popup" id="footer4" type="dialog"/>
+    <container displayname="Popup" id="footer5" type="dialog"/>
+    <container displayname="Popup" id="footer6" type="dialog"/>
+    <container displayname="Popup" id="seg1" type="dialog"/>
+    <container displayname="Popup" id="calgrid1" type="dialog"/>
+    <container displayname="Form" id="dummy" type="form"/>
+    <container displayname="Form" id="frm1" type="form"/>
+    <container displayname="Form" id="frm2" type="form"/>
+    <container displayname="Form" id="frm3" type="form"/>
+    <container displayname="Form" id="frm4" type="form"/>
+    <container displayname="Form" id="frm5" type="form"/>
+    <container displayname="Form" id="frm6" type="form"/>
+    <container displayname="Form" id="frm7" type="form"/>
+    <container displayname="Form" id="frmEvents" type="form"/>
+    <container displayname="Form" id="frmHome" type="form"/>
+    <container displayname="Popup" id="pop1" type="dialog"/>
+    <container displayname="Popup" id="pop2" type="dialog"/>
+    <container displayname="Popup" id="pop3" type="dialog"/>
+    <container displayname="Popup" id="pop4" type="dialog"/>
+    <container displayname="Popup" id="pop5" type="dialog"/>
+    <container displayname="Popup" id="pop6" type="dialog"/>
+    <container displayname="Form" id="frm3" type="form"/>
+    <container displayname="Form" id="frm3" type="form"/>
+    <container displayname="Form" id="frm3" type="form"/>
+    <container displayname="Form" id="frm3" type="form"/>
+    <globalsequences/>
+    <skins/>
+</application>

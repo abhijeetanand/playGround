@@ -1,0 +1,34 @@
+<functionalModules projectName="FunctionalModule">
+   
+	<functionalModule name="m1" loadOnStartUp="true">
+		<views>frmHome,frm1,frm5</views>
+		<jsModules>basic.js</jsModules>
+	</functionalModule>
+	
+	<functionalModule name="module1Dep">
+		<views>frm11</views>
+	</functionalModule>
+	
+	<functionalModule name="module1">
+		<dependentModules>module1Dep</dependentModules>
+		<jsModules>module1.js</jsModules>
+	</functionalModule>
+	
+	<functionalModule name="module2">
+		<dependentModules>module1Dep</dependentModules>
+		<jsModules>module1.js</jsModules>
+	</functionalModule>
+	
+	<functionalModule name="module3" init="sampleFunction">
+		<views>frm3</views>
+	</functionalModule>
+	
+	<functionalModule name="module4" loadOnStartUp="false">
+		<views>frm4</views>
+	</functionalModule>
+	
+	<functionalModule name="module5">
+		<dependentModules>not_present</dependentModules>
+		<views>frm6</views>
+	</functionalModule>
+</functionalModules>

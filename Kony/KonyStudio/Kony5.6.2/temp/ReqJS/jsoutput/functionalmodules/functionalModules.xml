@@ -1,0 +1,42 @@
+<functionalModules projectName="RequireJS">
+   <functionalModule loadOnStartUp="true" name="m1">
+		<views>frmHome</views>
+		<jsModules>module1.js</jsModules>
+   </functionalModule>
+   
+   <functionalModule name="sameFile">
+		<jsModules>sameFile.js</jsModules>
+   </functionalModule>
+   
+   <functionalModule name="sameFileOne">
+		<jsModules>sameFileOne.js</jsModules>
+   </functionalModule>
+   
+   <functionalModule name="oneDependent">
+		<jsModules>oneDependent.js</jsModules>
+   </functionalModule>
+   
+   <functionalModule name="twoDependent">
+		<jsModules>twoDependent.js</jsModules>
+   </functionalModule>
+   
+   <functionalModule name="checkout">
+		<jsModules>cart.js,inventory.js,checkout.js</jsModules>
+   </functionalModule>
+   
+   <functionalModule name="checkoutDependent">
+		<dependentModules>Dependent</dependentModules>
+		<jsModules>checkoutDependent.js</jsModules>
+   </functionalModule>
+   
+   <functionalModule name="Dependent">
+		<jsModules>cartDependent.js,inventoryDependent.js</jsModules>
+   </functionalModule>
+   
+   <functionalModule name="dependentNotLoaded">
+		<jsModules>checkoutDependentTwo.js</jsModules>
+   </functionalModule>
+<functionalModule loadOnStartUp="true" name="KonydefaultModules">
+        <jsModules>appskins.js,application.js,ReqJSglobalsequences.js,startup.js</jsModules>
+    </functionalModule>
+</functionalModules>

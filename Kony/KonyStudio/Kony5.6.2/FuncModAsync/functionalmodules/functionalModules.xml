@@ -1,0 +1,105 @@
+<!--/**
+views : list of ids of forms, popups, templates (seg,datagrid, header, footer... etc)  - Optional
+jsModules : js modules required for this functional module, - Optional
+dependentModules : Other functional modules required for this module. - Optional
+
+Either forms or modules should be provided for a module.
+**/-->
+<functionalModules projectName="FunctionalModule">
+   
+   <functionalModule name="m1" loadOnStartUp="true">
+	<jsModules>basic.js</jsModules>
+      <views>frmHome</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_001">
+	  <dependentModules>loadmodule_003</dependentModules>
+      <views>frm1</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_002">
+      <views>frm2</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_003">
+      <views>header1,footer1,seg1</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_004">
+      <views>pop1,pop2</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_005">
+      <views>header2,footer2,frm3,pop3</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_006">
+      <jsModules>mod1.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_007">
+      <jsModules>workerthreads/mod11.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_008">
+	  <views>frm4</views>
+      <jsModules>mod2.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_009">
+	  <dependentModules>loadmodule_010</dependentModules>
+	  <views>pop4</views>
+      <jsModules>workerthreads/mod22.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_010">
+	  <views>header3,footer3</views>
+      <jsModules>workerthreads/mod33.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_011" init="testInit">
+	  <views>header4,footer4,frm5,pop5</views>
+      <jsModules>mod3.js,workerthreads/mod4.js</jsModules> <!-- add workerthreads/util*.js -->
+   </functionalModule>
+   <functionalModule name="loadmodule_012">
+		<dependentModules>loadmodule_013,loadmodule_014</dependentModules>
+	  <views>frm6</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_013">
+	  <views>header5</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_014">
+	  <views>footer5</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_015" loadOnStartUp="true">
+	  <dependentModules>loadmodule_016</dependentModules>
+	  <views>frm7</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_016">
+	  <dependentModules>loadmodule_017</dependentModules>
+	  <views>pop6</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_017">
+	  <dependentModules>loadmodule_018</dependentModules>
+	  <views>footer6</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_018">
+	  <views>header6</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_019">
+      <jsModules>initevnt.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_020">
+      <jsModules>prshwevent.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_021">
+      <jsModules>pstShwEvnt.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_022">
+      <jsModules>onhideEvnt.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_023">
+      <jsModules>onOrntchng.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_024">
+      <views>frmEvents,dummy</views>
+   </functionalModule>
+   <functionalModule name="loadmodule_025">
+      <jsModules>dstryEvnt.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_026">
+      <jsModules>apservcEvnt.js</jsModules>
+   </functionalModule>
+   <functionalModule name="loadmodule_1251" init="init">
+      <jsModules>module1251.js</jsModules>
+   </functionalModule> 
+</functionalModules>

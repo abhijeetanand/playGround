@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plugins>
+    <pluginInfo version-no="5.6.2.QA_v201407081855_r13" plugin-id="com.pat.tool.keditor.KEditorPlugin" plugin-name="Kony Studio"/>
+    <pluginInfo version-no="5.6.2.QA_v201406061755_r1" plugin-name="Third Party Jars Plug-in"/>
+    <pluginInfo version-no="5.6.1.QA_v201402041324" plugin-id="com.pat.soapui.SoapUIPlugin" plugin-name="Soap UI Plugin"/>
+    <pluginInfo version-no="5.6.8.QA_v201406271028" plugin-name="Kony Codegenerator"/>
+    <pluginInfo version-no="5.6.4.QA_v201404291502" plugin-id="com.kony.help.Activator" plugin-name="KonyHelp Plug-in"/>
+    <pluginInfo version-no="5.6.1.QA_v201402041416" plugin-id="com.kony.nativecodegen.NativeCodeGenPlugin" plugin-name="Nativecodegen"/>
+    <pluginInfo version-no="5.6.2.QA_v201404091730" plugin-name="Kony Studio Licensing"/>
+    <pluginInfo version-no="5.6.2.QA_v201405311707_r5" plugin-id="com.kony.cloudmiddleware.Activator" plugin-name="CloudMiddlewarePlugin"/>
+    <pluginInfo version-no="5.6.2.QA_v201405311707_r5" plugin-id="com.kony.cloudthirdparty.Activator" plugin-name="CloudThirdPartyPlugin"/>
+    <pluginInfo version-no="5.6.2.QA_v201406021839_r1" plugin-id="com.viz.ide.VisualiserIDEPlugin" plugin-name="Visualizer Integration Plugin"/>
+    <pluginInfo version-no="5.6.2.QA_v201404241817" plugin-id="com.kony.studio.cloud.StudioCloudPlugin" plugin-name="Kony Studio Cloud Integration"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291626" plugin-id="com.kony.studio.sky.SkyPlugin" plugin-name="Sky Data Explorer"/>
+    <pluginInfo version-no="5.6.17.QA_v201404231831" plugin-name="Functional Preview Plugin"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291436" plugin-id="org.keplerproject.ldt.core.LuaCorePlugin" plugin-name="Lua Core"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291436" plugin-id="org.keplerproject.ldt.ui.baseExts.BaseExtsPlugin" plugin-name="Lua BaseExts"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291436" plugin-id="org.keplerproject.ldt.ui.LDTUIPlugin" plugin-name="Lua UI"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291436" plugin-name="Lua  win32"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291436" plugin-name="Lua Documentation"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291436" plugin-name="Lua Logger"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291436" plugin-id="org.kepler.ldt.laucher.LauncherPlugin" plugin-name="Lua Debug Launcher"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291436" plugin-id="org.keplerproject.ldt.debug.core.LuaDebuggerPlugin" plugin-name="Lua Debug Core"/>
+    <pluginInfo version-no="5.6.1.QA_v201404291436" plugin-id="org.keplerproject.ldt.debug.ui.LuaDebugUIPlugin" plugin-name="Lua Debug UI"/>
+    <pluginInfo version-no="5.6.31.QA_v201407071920" plugin-id="com.pat.android.Activator" plugin-name="Tablet Android"/>
+    <pluginInfo version-no="5.6.3.QA_v201405201702" plugin-id="com.pat.j2me.J2MEPlugin" plugin-name="Blackberry &amp; J2ME"/>
+    <pluginInfo version-no="5.6.2.QA_v201405211330_r1" plugin-id="com.kony.bb10.BB10Plugin" plugin-name="Blackberry 10"/>
+    <pluginInfo version-no="5.6.11.QA_v201407091653" plugin-id="com.pat.winmobile.WinMobilePlugin" plugin-name="Winmobile Plug-in"/>
+    <pluginInfo version-no="5.6.15.QA_v201407022132" plugin-id="com.kony.windows.WindowsPhone8Plugin" plugin-name="Windows Phone 8 Plug-in"/>
+    <pluginInfo version-no="5.6.11.QA_v201406262124" plugin-id="com.kony.windows.Windows8Plugin" plugin-name="Windows 8 Plug-in"/>
+    <pluginInfo version-no="5.6.31.QA_v201407071918" plugin-id="com.pat.android.Activator" plugin-name="Android"/>
+    <pluginInfo version-no="5.6.5.QA_v201405261419" plugin-id="thinclientplugin.Activator" plugin-name="ThinClient"/>
+    <pluginInfo version-no="5.6.16.QA_v201407091926" plugin-id="com.kony.windows.WinDesktopPlugin" plugin-name="Windows Desktop Plug-in"/>
+    <pluginInfo version-no="5.6.4.QA_v201407012220_r1" plugin-name="SPA"/>
+    <pluginInfo version-no="5.6.4.QA_v201407012250_r1" plugin-name="Desktop Web"/>
+    <pluginInfo version-no="5.6.2.QA_v201406101059_r7" plugin-id="com.kony.sync.ide.SyncPlugin" plugin-name="Kony Sync"/>
+    <pluginInfo version-no="5.6.3.QA_v201407011702_r1" plugin-id="com.kony.web.Activator" plugin-name="Kony Web Commons"/>
+    <pluginInfo version-no="5.6.20.QA_v201407091631" plugin-id="iosplugin.Activator" plugin-name="iOS Plugin"/>
+</plugins>

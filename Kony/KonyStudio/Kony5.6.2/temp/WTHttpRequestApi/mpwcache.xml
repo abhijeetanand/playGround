@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application>
+    <container id="mpwcontainer">
+        <component displayname="" id="mpwcomponent" type="cache">
+            <attributes datatype="string" name="margin" platform="spawindows" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="spaan" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="spaip" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="xadvnth" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="spabb" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="xadvip" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="bjs" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="spabbnth" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="xadvpalm" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="xadvbb" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="xadvand" value="0,4,0,4-0,2,0,2"/>
+            <attributes datatype="string" name="margin" platform="spawinphone8" value="0,4,0,4-0,2,0,2"/>
+        </component>
+    </container>
+    <globalsequences/>
+    <skins/>
+</application>

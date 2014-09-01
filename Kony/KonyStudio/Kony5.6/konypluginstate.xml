@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="pluginstate">
+	<item value="true" key="testHTTPStatus.j2mebuild"/>
+	<item value="true" key="HelloWorldViz.winmobilebuild"/>
+	<item value="false" key="BrowserWidgetEx.apppropmodified"/>
+	<item value="true" key="KitchenSinkAPI.apppropmodified"/>
+	<item value="true" key="HelloWorldViz.balckberrybuild"/>
+	<item value="false" key="BrowserWidgetEx.winmobilebuild"/>
+	<item value="true" key="HelloWorldViz.j2mebuild"/>
+	<item value="true" key="testHTTPStatus.balckberrybuild"/>
+	<item value="false" key="testHTTPStatus.winmobilebuild"/>
+	<item value="false" key="HelloWorldViz.apppropmodified"/>
+	<item value="true" key="BrowserWidgetEx.balckberrybuild"/>
+	<item value="true" key="BrowserWidgetEx.j2mebuild"/>
+	<item value="false" key="testHTTPStatus.apppropmodified"/>
+</section>

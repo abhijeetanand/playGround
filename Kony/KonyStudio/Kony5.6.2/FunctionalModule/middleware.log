@@ -1,0 +1,354 @@
+04 Jul 2014/13:04:32  INFO kony.JettyLOG - jetty-6.1.11
+04 Jul 2014/13:04:34  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:37  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:38  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:39  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/13:04:39  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:40 DEBUG utilities.ConfigUtility - Loading the middleware properties located at G:/g/workspace5.6/middleware/middleware-bootconfig/middleware.properties
+04 Jul 2014/13:04:42 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/13:04:42 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/13:04:43  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:44  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:45  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:45  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:46  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:47  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:47  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:48  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:49  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/13:04:49  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:52 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/13:04:52 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/13:04:53  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:53  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:54  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:55  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/13:04:55  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:57 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/13:04:58 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/13:04:59  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:04:59  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:05:00  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:05:00  INFO kony.JettyLOG - Started {}
+04 Jul 2014/13:05:00  INFO kony.JettyLOG - SelectChannelConnector@0.0.0.0:54106
+04 Jul 2014/13:05:01  INFO kony.JettyLOG - Started {}
+04 Jul 2014/13:05:01  INFO kony.JettyLOG - SslSocketConnector@0.0.0.0:54107
+04 Jul 2014/13:06:30  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:32  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:32  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:32  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:33  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:33  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:33  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:33  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:33  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:34  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:34  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:34  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:34  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:34  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:34  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:34  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:35  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:35  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:35  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:35  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:35  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:36  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:37  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:37  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:37  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:38  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:41  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:41  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:41  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:41  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:42  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:42  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:42  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:43  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:06:58  INFO kony.JettyLOG - Shutdown hook executing
+04 Jul 2014/13:06:58  INFO kony.JettyLOG - Shutdown hook complete
+04 Jul 2014/13:07:48  INFO kony.JettyLOG - jetty-6.1.11
+04 Jul 2014/13:07:50  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:50  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:50  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:50  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/13:07:50  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:50 DEBUG utilities.ConfigUtility - Loading the middleware properties located at G:/g/workspace5.6/middleware/middleware-bootconfig/middleware.properties
+04 Jul 2014/13:07:53 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/13:07:53 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/13:07:54  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:55  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:56  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:56  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:57  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:58  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:58  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:07:59  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:08:00  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/13:08:00  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:08:02 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/13:08:03 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/13:08:04  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:08:04  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:08:05  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:08:06  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/13:08:06  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:08:08 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/13:08:08 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/13:08:09  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:08:10  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:08:11  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:08:11  INFO kony.JettyLOG - Started {}
+04 Jul 2014/13:08:11  INFO kony.JettyLOG - SelectChannelConnector@0.0.0.0:54234
+04 Jul 2014/13:08:11  INFO kony.JettyLOG - Started {}
+04 Jul 2014/13:08:11  INFO kony.JettyLOG - SslSocketConnector@0.0.0.0:54235
+04 Jul 2014/13:09:24  INFO kony.JettyLOG - jetty-6.1.11
+04 Jul 2014/13:09:27  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:27  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:27  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:28  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/13:09:28  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:29 DEBUG utilities.ConfigUtility - Loading the middleware properties located at G:/g/workspace5.6/middleware/middleware-bootconfig/middleware.properties
+04 Jul 2014/13:09:32 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/13:09:32 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/13:09:33  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:34  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:35  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:36  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:36  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:37  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:38  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:39  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:40  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/13:09:40  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:43 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/13:09:43 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/13:09:45  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:45  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:46  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:47  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/13:09:47  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:51 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/13:09:51 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/13:09:52  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:53  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:55  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/13:09:55  INFO kony.JettyLOG - Started {}
+04 Jul 2014/13:09:55  INFO kony.JettyLOG - SelectChannelConnector@0.0.0.0:54238
+04 Jul 2014/13:09:56  INFO kony.JettyLOG - Started {}
+04 Jul 2014/13:09:56  INFO kony.JettyLOG - SslSocketConnector@0.0.0.0:54239
+04 Jul 2014/13:09:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:09:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:00  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:00  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:00  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:00  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:00  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:04  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:04  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:06  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:08  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:09  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:09  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:09  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:10  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:10  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:10  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:10  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:10:39  INFO kony.JettyLOG - Shutdown hook executing
+04 Jul 2014/13:10:39  INFO kony.JettyLOG - Shutdown hook complete
+04 Jul 2014/13:11:50  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:52  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:52  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:53  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:53  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:53  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:55  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:55  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:55  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:55  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:55  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:55  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:56  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:56  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:56  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:56  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:11:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:12:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:12:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:12:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:12:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:12:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:12:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:12:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:12:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/13:14:38  INFO kony.JettyLOG - Shutdown hook executing
+04 Jul 2014/13:14:38  INFO kony.JettyLOG - Shutdown hook complete
+04 Jul 2014/14:42:19  INFO kony.JettyLOG - jetty-6.1.11
+04 Jul 2014/14:42:21  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:22  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:22  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:23  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/14:42:23  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:24 DEBUG utilities.ConfigUtility - Loading the middleware properties located at G:/g/workspace5.6/middleware/middleware-bootconfig/middleware.properties
+04 Jul 2014/14:42:26 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/14:42:27 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/14:42:28  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:28  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:29  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:30  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:30  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:31  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:32  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:32  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:33  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/14:42:33  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:36 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/14:42:37 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/14:42:38  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:38  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:39  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:40  INFO kony.JettyLOG - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+04 Jul 2014/14:42:40  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:44 DEBUG common.DCFilter - Loading deafult log init handler
+04 Jul 2014/14:42:44 DEBUG common.DCFilter - NDC Filter initialized
+04 Jul 2014/14:42:45  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:45  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:46  INFO kony.JettyLOG - No Transaction manager found - if your webapp requires one, please configure one.
+04 Jul 2014/14:42:47  INFO kony.JettyLOG - Started {}
+04 Jul 2014/14:42:47  INFO kony.JettyLOG - SelectChannelConnector@0.0.0.0:8888
+04 Jul 2014/14:42:48  INFO kony.JettyLOG - Started {}
+04 Jul 2014/14:42:48  INFO kony.JettyLOG - SslSocketConnector@0.0.0.0:8443
+04 Jul 2014/14:46:43  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:45  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:45  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:46  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:46  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:46  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:46  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:46  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:47  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:47  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:47  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:47  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:47  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:47  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:47  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:48  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:48  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:48  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:48  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:49  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:49  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:49  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:50  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:50  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:50  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:51  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:53  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:53  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:54  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:55  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:56  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:56  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:56  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:56  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:57  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:58  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:46:59  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:00  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:00  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:00  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:01  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:02  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:03  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:04  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:04  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:04  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:04  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:04  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:04  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:04  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:05  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:05  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/14:47:05  INFO tool.CGE - Application Context given by IDE, already created and still alive
+04 Jul 2014/15:05:31  INFO kony.JettyLOG - Shutdown hook executing
+04 Jul 2014/15:05:31  INFO kony.JettyLOG - Shutdown hook complete

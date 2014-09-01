@@ -1,0 +1,1594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="konywidgets" basedir="."  default="all">
+	<target name="init">
+		<taskdef resource="com/kony/ant/antkonyscript.properties">
+		  <classpath>
+				<pathelement location="${plugin.loc}/lib/KonyAntScript.jar"/>
+		  </classpath>
+		</taskdef>
+		<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	      <classpath>
+	        <pathelement location="${plugin.loc}/lib/ant-contrib-0.6.jar"/>
+	      </classpath>
+	    </taskdef>
+		<property name="outputfolder" value="${appfolder}/output/lua"/>
+		<property environment="env"/>
+		<property name="dist.dir" value="${basedir}/dist"/>
+		<property name="jssrc.dir" value="${resfolder}/../jssrc/android"/>
+		<property name="secureappsource" value="false"/>
+		
+		<condition property="codedir" value="js" else="lua">
+			<equals arg1="js" arg2="${dev.language}" casesensitive="false" trim="true"/>
+		</condition>
+		<condition property="outputdir" value="jsoutput" else="output">
+			<equals arg1="js" arg2="${dev.language}" casesensitive="false" trim="true"/>
+		</condition>
+	
+		<if>
+			<equals arg1="${usegoogleplaylocationservices}" arg2="$${usegoogleplaylocationservices}"/>
+			<then>
+				<property name="usegoogleplaylocationservices.local" value="false"/>
+			</then>
+			<else>
+				<property name="usegoogleplaylocationservices.local" value="${usegoogleplaylocationservices}"/>
+			</else>
+		</if>
+		
+		<condition property="mapv2keyadded" value="true" else="false">
+		    <matches pattern="com.google.android.maps.v2.API_KEY" string="${andapplicationtags}"/>
+		</condition>
+		
+		<if>
+			<equals arg1="${nativecodegen}" arg2="true"/>
+			<then>
+				<property name="app.dir" value="${dist.dir}/${appid}_native"/>
+			</then>
+		</if>
+		<if>
+			<equals arg1="${hybridmode}" arg2="native"/>
+			<then>
+				<property name="app.dir" value="${dist.dir}/${appid}"/>
+			</then>
+		<else>
+			<if>
+				<equals arg1="${hybridmode}" arg2="wrapper"/>
+				<then>
+					<property name="app.dir" value="${dist.dir}/${appid}_wrapper"/>
+					<property name="hybridmode.dir" value="${appfolder}/${outputdir}/spaandroidwrapper"/>
+				</then>
+			<else>
+				<if>
+					<equals arg1="${hybridmode}" arg2="mixed"/>
+					<then>
+						<property name="app.dir" value="${dist.dir}/${appid}_mixed"/>
+						<property name="hybridmode.dir" value="${appfolder}/${outputdir}/spaandroidmixed"/>
+					</then>
+				</if>
+			</else>
+			</if>
+		</else>
+		</if>
+		
+		<property name="assets.dir" value="${app.dir}/assets"/>
+		<property name="libs.dir" value="${app.dir}/libs"/>
+		<property name="src.dir" value="${app.dir}/src"/>
+		<property name="ffi.package" value="com/konylabs/ffi"/>
+		<property name="cwsrc.package" value="com/konylabs/customwidget"/>	
+		<property name="bytecode.file" value="konyappluabytecode.o"/>
+		
+		<if>
+			<or>
+				<equals arg1="${resources.new.structure}" arg2="false"/>
+				<equals arg1="${resources.new.structure}" arg2="$${resources.new.structure}"/>
+			</or>
+			<then>
+				<property name="resources.common.folder" value="common"/>
+				<property name="resources.platform.folder" value="${resource.platform.folder}"/>
+				<property name="resources.mobile.web" value="mobilethinclient"/>
+			</then>
+		</if>
+	</target>
+	    
+    <target name="copyjar">
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${app.dir}"/>
+        <unjar src="codegen.jar" dest="${app.dir}"/>
+    </target>
+	
+	<target name="copybuildfile" depends="copyjar">
+		<if>
+			<available file="${android.home}/tools/ant/build.xml"/>
+			<then>
+				<copy file="${app.dir}/build4.0.xml" tofile="${app.dir}/build.xml" overwrite="true"/>
+			</then>
+		</if>
+	</target>
+	
+    <target name="copyextlibs">
+	<echo>Copying extlibs ... dev.language = ${dev.language}</echo>
+		<if>
+			<equals arg1="${enablecharts2d3d}" arg2="true"/>
+			<then>
+				<copy file="extlibs/konychart2d3dengineNeXt.jar" tofile="${app.dir}/libs/konychart2d3dengineNeXt.jar" overwrite="true"/>
+				<copy file="extlibs/armeabi/libKLChartWidgetNeXt.so" tofile="${app.dir}/libs/armeabi/libKLChartWidgetNeXt.so" overwrite="true"/>
+				<copy file="extres/actualLetters.png" tofile="${app.dir}/assets/actualLetters.png" overwrite="true"/>
+				<if>
+					<equals arg1="${supportx86}" arg2="true"/>
+					<then>
+						<copy file="extlibs/x86/libKLChartWidgetNeXt.so" tofile="${app.dir}/libs/x86/libKLChartWidgetNeXt.so" overwrite="true"/>
+					</then>
+				</if>
+			</then>
+		</if>
+		<if>
+			<equals arg1="${enablefileupload}" arg2="true"/>
+			<then>
+				<copy file="extlibs/httpmime-4.1.jar" tofile="${app.dir}/libs/httpmime-4.1.jar" overwrite="true"/>
+			</then>
+		</if>
+		<if>
+			<equals arg1="${dev.language}" arg2="js"/>
+			<then>
+				<if>
+					<equals arg1="${build.option}" arg2="debug"/>
+					<then>
+						<copy file="extlibs/armeabi/libkonyjsvm_debug.so" tofile="${app.dir}/libs/armeabi/libkonyjsvm.so" overwrite="true"/>
+					</then>
+					<else>
+						<copy file="extlibs/armeabi/libkonyjsvm_release.so" tofile="${app.dir}/libs/armeabi/libkonyjsvm.so" overwrite="true"/>
+					</else>
+				</if>
+				<if>
+					<equals arg1="${supportx86}" arg2="true"/>
+					<then>
+						<copy file="extlibs/x86/libkonyjsvm_release.so" tofile="${app.dir}/libs/x86/libkonyjsvm.so" overwrite="true"/>
+					</then>
+				</if>
+			</then>
+		</if>
+    </target>
+	<target name="cleanmapv2">
+		<delete file="${app.dir}/res/layout/mapv2.xml"/>
+		<delete dir="${app.dir}/googleplay"/>
+	</target>	
+	<target name="copy-googleplayservices" >
+		<echo message="copying google-play-services_lib and setting lib reference in project.properties" />
+
+		<mkdir dir="${app.dir}/googleplay"/>
+		<copy todir="${app.dir}/googleplay/google-play-services_lib" overwrite="true">
+			<fileset dir="${android.home}/extras/google/google_play_services/libproject/google-play-services_lib"/>
+		</copy>
+		<if>
+			<available file="${plugin.loc}/lib/KonyAntScript.jar"/>
+			<then>
+				<exec-shell executable="cmd" failonerror="true" failifexecutionfails="true" >
+					<arg line='/c "${android.home}/tools/android update lib-project --target 1 --path  ${app.dir}/googleplay/google-play-services_lib"'/>
+				</exec-shell>		
+			</then>
+			<else>
+				<exec dir="${android.home}\tools\" executable="android.bat" failonerror="true" failifexecutionfails="true" >
+					<arg line="update lib-project --target 1 --path  ${app.dir}/googleplay/google-play-services_lib"/>
+				</exec>	
+			</else>
+		</if>
+		<!--Concatenating android.library=true as update lib-project is not appending the same.Bug logged
+		http://code.google.com/p/android/issues/detail?id=38270 -->
+		<concat destfile="${app.dir}/googleplay/google-play-services_lib/project.properties" append="true">${line.separator}android.library=true</concat>
+		
+		<var name="googleplayserviceslibpath" value="android.library.reference.1=./googleplay/google-play-services_lib"/>
+		<echo message="googleplayserviceslibpath=${googleplayserviceslibpath}"/>
+		
+		<replace file="${app.dir}/project.properties" token="$GOOGLEPLAYSERVICESLIBPATH" value="${googleplayserviceslibpath}"/>		
+
+	</target>	
+    <target name="gen">
+        <echo>Building android source code</echo>
+		<if>
+			<available file="${plugin.loc}/lib/KonyAntScript.jar"/>
+			<then>
+				<osfamily property="os.family"/>          
+				<if>
+					<equals arg1="${os.family}" arg2="windows"/>
+					<then>
+						<propertyregex property="andhome" input="${android.home}" regexp="\\" replace="//"/>
+					</then>
+					<else>
+						<property name="andhome" value="${android.home}"/>
+					</else>
+				</if>
+			</then>
+			<else>
+				 <propertyregex property="andhome" input="${android.home}" regexp="\\" replace="//"/>
+			</else>
+		</if>
+		
+    	<if>
+    		   <equals arg1="${packagename}" arg2="$${packagename}"/>
+    		<then>
+    			<echo message="The value of packagename is empty" />
+    			<property name="package" value="com.konylabs.${appid}"/>
+    		</then>
+    	<else>
+    		<if>
+    			<equals arg1="${packagename}" arg2="" />
+    			<then>
+    				<echo message="The value of packagename is empty" />
+    				<property name="package" value="com.konylabs.${appid}"/>
+    			</then>
+    		<else>
+    			<echo message="The value of packagename is ${packagename}" />
+    			<property name="package" value="${packagename}"/>
+    		</else>
+    		</if>
+    	</else>
+    	</if>
+    	
+        <propertyregex property="packagepath" input="${package}" regexp="\." replace="//"/> 
+    	<!-- Creating source folder -->
+    	<echo message="Creating package path: ${app.dir}/src/${packagepath}"/> 
+    	
+    	<mkdir dir="${app.dir}/src/${packagepath}"/>
+        <!--mkdir dir="${app.dir}/src/com/konylabs/${appid}"/>
+        <move file="${app.dir}/src/com/konylabs/APPID.java" tofile="${app.dir}/src/com/konylabs/${appid}/${appid}.java"/-->
+    	<move file="${app.dir}/src/APPID.java" tofile="${app.dir}/src/${packagepath}/${appid}.java"/>
+
+    	<replace file="${app.dir}/AndroidManifest.xml" token="$PACKAGE" value="${package}"/>
+        <replace file="${app.dir}/AndroidManifest.xml" token="$APPID" value="${appid}"/>
+		<!--<replace file="${app.dir}/AndroidManifest.xml" token="$MINSDKVERSION" value="${andminsdkkey}"/> -->
+    	<replace file="${app.dir}/AndroidManifest.xml" token="$VERSIONNAME" value="${appversion}"/>
+		<replace file="${app.dir}/AndroidManifest.xml" token="$VERSIONCODE" value="${appversioncode}"/>
+        <replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$PACKAGE" value="${package}"/>
+        <replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$APPID" value="${appid}"/>
+        <replace file="${app.dir}/build.xml" token="$APPID" value="${appid}"/>
+        <replace file="${app.dir}/local.properties" token="$ANDROIDSDK" value="${andhome}"/>
+        <replace file="${app.dir}/res/values/strings.xml" token="$APPID" value="${appname}"/>
+		
+		<if>
+			<bool>
+				<isgreaterthan arg1="${andtargetsdkkey}" arg2="12"/>
+			</bool>
+    		<then>
+				<replace file="${app.dir}/AndroidManifest.xml" token="$CONFIG_CHANGES" value="locale|keyboardHidden|orientation|screenSize"/>
+			</then>
+			<else>
+				<replace file="${app.dir}/AndroidManifest.xml" token="$CONFIG_CHANGES" value="locale|keyboardHidden|orientation"/>
+			</else>
+		</if>
+		
+		<!--
+			***************************************************************************************
+			INCLUDE GOOGLE PLAY SERVICES LIBRARY PROJECT IF 'usegoogleplaylocationservices" IS true
+			****************************************************************************************
+		-->
+		<antcall target="cleanmapv2"></antcall>
+		<echo> usegoogleplaylocationservices: ${usegoogleplaylocationservices.local} </echo>
+		<if>
+    		<equals arg1= "${usegoogleplaylocationservices.local}" arg2= "true"/>
+    		<then>
+				<!-- Check if Google Play Services library is already included (copied) -->
+				<available file="${app.dir}/googleplay/google-play-services_lib" type="dir" property="googleplayserviceslib.present"/>
+				<echo> googleplayserviceslib.present: ${googleplayserviceslib.present} </echo>
+				<if>
+					<not>
+					<equals arg1= "${googleplayserviceslib.present}" arg2= "false"/>
+					</not>
+					<then>
+						<antcall target="copy-googleplayservices"></antcall>
+					</then>
+				</if>
+			</then>
+		</if>
+		
+		<!--
+			***********************************************************
+			Replacing USES_MAPS entry in AndroidManifest.xml
+			***********************************************************	
+		-->
+		<if>
+    		<equals arg1= "${usesmaps}" arg2= "true"/>
+    		<then>
+				<replace file="${app.dir}/AndroidManifest.xml" token="$USES_MAPS" 
+					value="&lt;uses-library android:name=&quot;com.google.android.maps&quot; /&gt;"/>
+			</then>
+			<else>
+				<replace file="${app.dir}/AndroidManifest.xml" token="$USES_MAPS" value=""/>
+			</else>
+		</if>
+		<!--
+			******************************************************************************************
+			Checking if , MAPV2_KEY entry already exists in andapplicationtags of AndroidManifest.xml
+			******************************************************************************************	
+		-->
+		<echo message="mapv2keyadded in application tags = ${mapv2keyadded}"/>
+		<if>
+			<equals arg1="${mapv2keyadded}" arg2="true"/>
+			<then>
+				<copy file="extres/mapv2.xml" tofile="${app.dir}/res/layout/mapv2.xml" overwrite="true"/>
+				<antcall target="copy-googleplayservices"></antcall>
+			</then>
+		</if>
+
+		<!--
+			***********************************************************
+			Replacing MAPV2_PERMISSIONS , MAPV2_KEY entries in AndroidManifest.xml
+			***********************************************************	
+		-->
+
+    	<if>
+		<or>
+			<equals arg1="${googlemapv2key}" arg2="$${googlemapv2key}"/>
+			<equals arg1="${googlemapv2key}" arg2="" />
+		</or>
+			<then>
+				<echo message="The value of googlemapv2key is empty" />
+				<var name="mapv2_permissions" value=""/>
+				<var name="mapv2_key" value=""/>
+				<!--Remove GOOGLEPLAYSERVICESLIBPATH.Replaces with "" only if it was not replaced earlier in copy-googleplayservices--> 
+				<var name="googleplayserviceslibpath" value=""/>
+				<replace file="${app.dir}/project.properties" token="$GOOGLEPLAYSERVICESLIBPATH" value="${googleplayserviceslibpath}"/>	
+			</then>
+    	<else>
+    		<echo message="The value of googlemapv2key in project properties is ${googlemapv2key}" />
+
+		    <if>
+		    	<equals arg1="${mapv2keyadded}" arg2="true"/>
+			    <then>
+				    <fail message="Duplicate maps.v2.API_KEY found in Android Manifest application tag child entries and Application Properties.Please retain only one maps.v2.API_KEY."/>
+			    </then>
+		    </if>
+			<copy file="extres/mapv2.xml" tofile="${app.dir}/res/layout/mapv2.xml" overwrite="true"/>
+			<antcall target="copy-googleplayservices"></antcall>
+			<var name="mapv2_key" value="&lt;meta-data android:name=&quot;com.google.android.maps.v2.API_KEY&quot; android:value=&quot;${googlemapv2key}&quot;/&gt;"/>
+			<var 
+				name="mapv2_permissions" 
+				value="&lt;permission android:name=&quot;${package}.permission.MAPS_RECEIVE&quot; android:protectionLevel=&quot;signature&quot;/&gt;${line.separator}
+				&lt;uses-permission android:name=&quot;${package}.permission.MAPS_RECEIVE&quot;/&gt;${line.separator}
+				&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;${line.separator}
+				&lt;uses-permission android:name=&quot;com.google.android.providers.gsf.permission.READ_GSERVICES&quot;/&gt;${line.separator}
+				&lt;uses-feature android:glEsVersion=&quot;0x00020000&quot;/&gt;"/>
+    	</else>
+    	</if>
+		<if>
+			<equals arg1="${mapv2keyadded}" arg2="true"/>
+		<then>
+			<var 
+				name="mapv2_permissions" 
+				value="&lt;permission android:name=&quot;${package}.permission.MAPS_RECEIVE&quot; android:protectionLevel=&quot;signature&quot;/&gt;${line.separator}
+				&lt;uses-permission android:name=&quot;${package}.permission.MAPS_RECEIVE&quot;/&gt;${line.separator}
+				&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;${line.separator}
+				&lt;uses-permission android:name=&quot;com.google.android.providers.gsf.permission.READ_GSERVICES&quot;/&gt;${line.separator}
+				&lt;uses-feature android:glEsVersion=&quot;0x00020000&quot;/&gt;"/>
+		</then>
+    	</if>
+	<echo> MapV2 Metadata-Key: ${mapv2_key} </echo>
+	<echo> MapV2 Permissions: ${mapv2_permissions} </echo>
+	<replace file="${app.dir}/AndroidManifest.xml" 
+			token="$MAPV2_KEY" 
+			value="${mapv2_key}" 
+			/>
+	<!--android.permission.ACCESS_NETWORK_STATE ,	android.permission.INTERNET are also needed for MapV2
+	    as they get addded by default for each app skipping additions in build tags here-->
+	<replace file="${app.dir}/AndroidManifest.xml" 
+			token="$MAPV2_PERMISSIONS" 
+			value="${mapv2_permissions}" 
+			/>	
+
+		<!--
+			***********************************************************
+			Replacing SEARCH BAR related entries in AndroidManifest.xml
+			***********************************************************	
+		-->
+		<if>
+    		<equals arg1= "${enablesearchbar}" arg2= "true"/>
+    		<then>
+			<move file="${app.dir}/src/PROVIDER.java" tofile="${app.dir}/src/${packagepath}/${appid}SearchSuggestionProvider.java"/>
+			<replace file="${app.dir}/AndroidManifest.xml" token="$SEARCH_PROVIDER" 
+				value="&lt;provider android:authorities=&quot;${package}.${appid}SuggestionProvider&quot;
+								 android:name=&quot;${package}.${appid}SearchSuggestionProvider&quot; /&gt;"/>
+			
+			<replace file="${app.dir}/AndroidManifest.xml" token="$SEARCHABLE_META_DATA" 
+				value="&lt;meta-data android:name=&quot;android.app.default_searchable&quot;
+								  android:value=&quot;.KonyMain&quot; /&gt;"/>
+			<replace file="${app.dir}/AndroidManifest.xml" token="$ACTION_SEARCH_INTENTFILTER" 
+				value=" &lt;intent-filter&gt;
+							&lt;action android:name=&quot;android.intent.action.SEARCH&quot; /&gt;
+							&lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+						&lt;/intent-filter&gt;"/>
+			<replace file="${app.dir}/AndroidManifest.xml" token="$SEARCH_META_DATA" 
+				value=" &lt;meta-data
+							android:name=&quot;android.app.searchable&quot;
+							android:resource=&quot;@xml/searchable&quot; /&gt;"/>				  
+
+			<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$IMPORT_SEARCH_CLASSES" 	
+						value="import com.konylabs.search.SearchDataAdapter;${line.separator}
+						import android.provider.SearchRecentSuggestions;${line.separator}
+						import android.content.Intent;${line.separator}
+						import android.app.SearchManager;${line.separator}"/>
+			<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$HANDLE_SEARCH_INTENT" 	
+					 value="protected void onNewIntent(Intent intent) {${line.separator}
+						if (Intent.ACTION_SEARCH.equals(intent.getAction())) {${line.separator}
+							// handles a search query${line.separator}
+							String query = intent.getStringExtra(SearchManager.QUERY);${line.separator}
+							String extraData = intent.getStringExtra(&quot;intent_extra_data_key&quot;);${line.separator}
+							SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,${line.separator}
+									${appid}SearchSuggestionProvider.AUTHORITY, ${appid}SearchSuggestionProvider.MODE);${line.separator}
+							suggestions.saveRecentQuery(query, extraData);${line.separator}
+							SearchDataAdapter.getInstance().raiseOnDoneCallback(query,extraData);${line.separator}
+						}${line.separator}
+						else${line.separator}
+							super.onNewIntent(intent);${line.separator}
+					}${line.separator}"/>
+			<replace file="${app.dir}/src/${packagepath}/${appid}SearchSuggestionProvider.java" token="$PACKAGE" value="${package}"/>
+			<replace file="${app.dir}/src/${packagepath}/${appid}SearchSuggestionProvider.java" token="$AUTHORITY" value="${package}.${appid}SuggestionProvider"/>
+			<replace file="${app.dir}/src/${packagepath}/${appid}SearchSuggestionProvider.java" token="$PROVIDER" value="${appid}SearchSuggestionProvider"/>
+			<replace file="${app.dir}/res/xml/searchable.xml" token="$AUTHORITY" value="${package}.${appid}SuggestionProvider"/>
+			<replace file="${app.dir}/res/values/strings.xml" token="$SEARCH_HINT" value="&lt;string name=&quot;search_hint&quot;&gt;Search&lt;/string&gt;"/>
+			<replace file="${app.dir}/res/values/strings.xml" token="$SEARCH_LABEL" value="&lt;string name=&quot;search_label&quot;&gt;Search&lt;/string&gt;"/>
+		</then>
+			<else>
+				<delete file="${app.dir}/src/PROVIDER.java"/>
+				<delete file="${app.dir}/res/xml/searchable.xml"/>
+				<replace file="${app.dir}/res/values/strings.xml" token="$SEARCH_HINT" value=""/>
+				<replace file="${app.dir}/res/values/strings.xml" token="$SEARCH_LABEL" value=""/>
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$IMPORT_SEARCH_CLASSES" value=""/>
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$HANDLE_SEARCH_INTENT" value=""/>
+				<replace file="${app.dir}/AndroidManifest.xml" token="$SEARCH_PROVIDER" value=""/>			
+				<replace file="${app.dir}/AndroidManifest.xml" token="$SEARCHABLE_META_DATA" value=""/>
+				<replace file="${app.dir}/AndroidManifest.xml" token="$ACTION_SEARCH_INTENTFILTER" value=""/>
+				<replace file="${app.dir}/AndroidManifest.xml" token="$SEARCH_META_DATA" value=""/>	
+			</else>
+    	</if>
+		
+		<!-- 
+			*************************************************************************************************
+				Replacing $MANIFEST_CHILD_TAGS and $APPLICATION_CHILD_TAGS in AndroidManifest.xml
+			*************************************************************************************************		
+		-->
+    	<if>
+    		   <equals arg1="${andmanifesttags}" arg2="$${andmanifesttags}"/>
+    		<then>
+    			<echo message="No child tags defined for manifest tag" />
+    			<property name="manifest_child_tags" value=""/>
+    		</then>
+			<else>
+				<echo message="The value of andmanifesttags is ${andmanifesttags}" />
+				<property name="manifest_child_tags" value="${andmanifesttags}"/>
+			</else>
+    	</if>
+     	<if>
+    		   <equals arg1="${andapplicationtags}" arg2="$${andapplicationtags}"/>
+    		<then>
+    			<echo message="No child tags defined for application tag" />
+    			<property name="application_child_tags" value=""/>
+    		</then>
+			<else>
+				<echo message="The value of andapplicationtags is ${andapplicationtags}" />
+				<property name="application_child_tags" value="${andapplicationtags}"/>
+			</else>
+    	</if>
+		<replace file="${app.dir}/AndroidManifest.xml" 
+						token="$MANIFEST_CHILD_TAGS" 
+						value="${manifest_child_tags}" 
+						/>
+		<replace file="${app.dir}/AndroidManifest.xml" 
+						token="$APPLICATION_CHILD_TAGS" 
+						value="${application_child_tags}" 
+						/>
+		<!-- 
+			*****************************************************
+				Replacing $SDK_VERSIONS in AndroidManifest.xml
+			*****************************************************	
+		-->
+		<if>
+			<equals arg1= "${andminsdkkey}" arg2= "None"/>
+			<then> 
+			<property name="minsdkversion" value=""/>
+			</then>
+			<else>
+			<property name="minsdkversion" value="android:minSdkVersion =&quot;${andminsdkkey}&quot;"/>
+			</else>
+		</if>
+		<if>
+			<equals arg1= "${andtargetsdkkey}" arg2= "None"/>
+			<then> 
+			<property name="targetsdkversion" value="android:targetSdkVersion=&quot;7&quot;"/>
+			</then>
+			<else>
+			<property name="targetsdkversion" value="android:targetSdkVersion=&quot;${andtargetsdkkey}&quot;"/>
+			</else>
+		</if>
+		<if>
+			<equals arg1= "${andmaxsdkkey}" arg2= "None"/>
+			<then> 
+			<property name="maxsdkversion" value=""/>
+			</then>
+			<else>
+			<property name="maxsdkversion" value="android:maxSdkVersion =&quot;${andmaxsdkkey}&quot;"/>
+			</else>
+		</if>
+
+		<property name="usessdk" value="${maxsdkversion} ${targetsdkversion} ${minsdkversion}"/>
+		<echo>Min SDK version: ${minsdkversion} </echo>
+		<echo>Max SDK version: ${maxsdkversion} </echo>
+		<echo>Target SDK version: ${targetsdkversion} </echo>
+		<replace file="${app.dir}/AndroidManifest.xml" token="$SDK_VERSIONS" value="&lt;uses-sdk ${usessdk}/&gt;" />
+
+		<!--
+			*************************************************************************************************************************************
+				Replacing $PUSH_NOTIFICATION_PERMISSIONS, $PUSH_NOTIFICATION_INTENTFILTER, $PUSH_NOTIFICATION_RECEIVER in AndroidManifest.xml.
+			*************************************************************************************************************************************	
+		-->
+		
+		<if>
+			<equals arg1= "${enablepushnotifications}" arg2= "true"/>
+			<then>
+				<if>
+					<not>
+						<equals arg1= "${customgcmbroadcastreceiver}" arg2= "$${customgcmbroadcastreceiver}"/>
+					</not>
+					<then>
+						<condition property="customgcmbroadcastreceiver.flag">
+							<and>
+								<length string="${customgcmbroadcastreceiver}" trim="true" when="greater" length="0"/>
+							</and>
+						</condition>
+						<if>
+							<equals arg1= "${customgcmbroadcastreceiver.flag}" arg2= "true"/>
+							<then>
+								<property name="customgcmbroadcastreceiver.local" value="${customgcmbroadcastreceiver}"/>
+							</then>
+							<else>
+								<property name="customgcmbroadcastreceiver.local" value="com.konylabs.gcm.KonyGCMBroadcastReceiver"/>
+							</else>
+						</if>
+					</then>
+					<else>
+						<property name="customgcmbroadcastreceiver.local" value="com.konylabs.gcm.KonyGCMBroadcastReceiver"/>
+					</else>
+				</if>	
+					<property name="push_notification_permissions" 
+					value="&lt;permission android:name=&quot;${package}.permission.C2D_MESSAGE&quot; android:protectionLevel=&quot;signature&quot;/&gt;${line.separator}
+					&lt;uses-permission android:name=&quot;${package}.permission.C2D_MESSAGE&quot;/&gt;${line.separator}
+					&lt;uses-permission android:name=&quot;com.google.android.c2dm.permission.RECEIVE&quot;/&gt;${line.separator}
+					&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot;/&gt;"/>
+					<property name="push_notification_intent_filter"
+								value="&lt;intent-filter&gt;${line.separator}&lt;action android:name=&quot;${package}.GCM_MSG_VIEW&quot;/&gt;${line.separator}
+								&lt;action android:name=&quot;${package}.GCM_REGID_VIEW&quot;/&gt;${line.separator}
+										&lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;${line.separator}&lt;/intent-filter&gt;"/>
+					
+					<property name="push_notification_receiver"
+								value="&lt;receiver android:name=&quot;${customgcmbroadcastreceiver.local}&quot; android:permission=&quot;com.google.android.c2dm.permission.SEND&quot;&gt;${line.separator}
+										&lt;intent-filter&gt;${line.separator}&lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;${line.separator}&lt;category android:name=&quot;${package}&quot; /&gt;${line.separator}
+										&lt;/intent-filter&gt;${line.separator}&lt;intent-filter&gt;${line.separator}&lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;${line.separator}&lt;category android:name=&quot;${package}&quot; /&gt;${line.separator}
+										&lt;/intent-filter&gt;${line.separator}&lt;/receiver&gt;"/>
+			</then>
+			<else>
+				<property name="push_notification_permissions" value=""/>
+				<property name="push_notification_intent_filter" value=""/>
+				<property name="push_notification_receiver" value=""/>
+			</else>
+		</if>
+
+		<echo> Push Notification Permissions: ${push_notification_permissions} </echo>
+		<echo> Push Notification Intent Filters: ${push_notification_intent_filter} </echo>
+		<echo> Push Notification Intent Receiver: ${push_notification_receiver} </echo>
+		<replace file="${app.dir}/AndroidManifest.xml" 
+						token="$PUSH_NOTIFICATION_PERMISSIONS" 
+						value="${push_notification_permissions}" 
+						/>
+
+		<replace file="${app.dir}/AndroidManifest.xml" 
+						token="$PUSH_NOTIFICATION_INTENTFILTER" 
+						value="${push_notification_intent_filter}" 
+						/>
+
+		<replace file="${app.dir}/AndroidManifest.xml" 
+						token="$PUSH_NOTIFICATION_RECEIVER" 
+						value="${push_notification_receiver}" 
+						/>
+
+						
+		<!--
+			*************************************************************************************************************************************
+				Replacing $DEEPLINK_INTENTFILTER in AndroidManifest.xml.
+			*************************************************************************************************************************************	
+		-->
+		<if>
+			<not>
+			<equals arg1="${deeplinkscheme}" arg2="$${deeplinkscheme}"/>
+			</not>
+			<then>
+				<echo file="deeplinkdata.txt" append="true"> &lt;intent-filter&gt;${line.separator}</echo>
+				<echo file="deeplinkdata.txt" append="true"> &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;${line.separator}</echo>
+				<echo file="deeplinkdata.txt" append="true"> &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot;/&gt;${line.separator}</echo>
+				<echo file="deeplinkdata.txt" append="true"> &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;${line.separator}</echo>
+				<for list="${deeplinkscheme}" delimiter="," param = "val">
+					<sequential>
+						<echo> Adding scheme: @{val}</echo>
+						<echo file="deeplinkdata.txt" append="true"> &lt;data android:scheme=&quot;@{val}&quot; /&gt;${line.separator}</echo>
+					</sequential>
+				</for>
+				
+				<if>
+					<not>
+						<equals arg1="${deeplinkhost}" arg2="$${deeplinkhost}"/>
+					</not>
+					<then>
+						<for list="${deeplinkhost}" delimiter="," param = "val">
+							<sequential>
+								<echo> Adding host: @{val}</echo>
+								<echo file="deeplinkdata.txt" append="true"> &lt;data android:host=&quot;@{val}&quot; /&gt;${line.separator}</echo>
+							</sequential>
+						</for>
+					</then>
+				</if>
+				<if>
+					<not>
+						<equals arg1="${deeplinkport}" arg2="$${deeplinkport}"/>
+					</not>
+					<then>
+						<for list="${deeplinkport}" delimiter="," param = "val">
+							<sequential>
+								<echo> Adding port: @{val}</echo>
+								<echo file="deeplinkdata.txt" append="true"> &lt;data android:port=&quot;@{val}&quot; /&gt;${line.separator}</echo>
+							</sequential>
+						</for>
+					</then>
+				</if>				
+				<if>
+					<not>
+						<equals arg1="${deeplinkpath}" arg2="$${deeplinkpath}"/>
+					</not>
+					<then>
+						<for list="${deeplinkpath}" delimiter="," param = "val">
+							<sequential>
+								<echo> Adding path: @{val}</echo>
+								<echo file="deeplinkdata.txt" append="true"> &lt;data android:path=&quot;@{val}&quot; /&gt;${line.separator}</echo>
+							</sequential>
+						</for>
+					</then>
+				</if>
+				<if>
+					<not>
+						<equals arg1="${deeplinkpathprefix}" arg2="$${deeplinkpathprefix}"/>
+					</not>
+					<then>
+						<for list="${deeplinkpathprefix}" delimiter="," param = "val">
+							<sequential>
+								<echo> Adding path prefix: @{val}</echo>
+								<echo file="deeplinkdata.txt" append="true"> &lt;data android:pathPrefix=&quot;@{val}&quot; /&gt;${line.separator}</echo>
+							</sequential>
+						</for>
+					</then>
+				</if>
+				<if>
+					<not>
+						<equals arg1="${deeplinkpathpattern}" arg2="$${deeplinkpathpattern}"/>
+					</not>
+					<then>
+						<for list="${deeplinkpathpattern}" delimiter="," param = "val">
+							<sequential>
+								<echo> Adding path pattern: @{val}</echo>
+								<echo file="deeplinkdata.txt" append="true"> &lt;data android:pathPattern=&quot;@{val}&quot; /&gt;${line.separator}</echo>
+							</sequential>
+						</for>
+					</then>
+				</if>
+				<echo file="deeplinkdata.txt" append="true"> &lt;/intent-filter&gt;${line.separator}</echo>	
+				<loadfile property="deeplink.prop" srcFile="deeplinkdata.txt"/>
+				<replace file="${app.dir}/AndroidManifest.xml" 
+						token="$DEEPLINK_INTENTFILTER" 
+						value="${deeplink.prop}" 
+				/>
+				<delete file="deeplinkdata.txt" />
+			</then>
+			<else>
+				<replace file="${app.dir}/AndroidManifest.xml" 
+						token="$DEEPLINK_INTENTFILTER" 
+						value="" 
+				/>
+			</else>
+		</if>
+		<!--
+			***********************************************************
+				Replacing $SUPPORT_SCREENS in AndroidManifest.xml
+			***********************************************************	
+		-->
+		<if>
+			<equals arg1= "${androidscreenanydensity}" arg2= "false"/>
+			<then>
+					<property name="anydensity" value=""/>
+			</then>
+			<else>
+					<property name="anydensity" value="android:anyDensity =&quot;${androidscreenanydensity}&quot;"/>
+			</else>
+		</if>
+		
+	<property name="smallscreens" value="android:smallScreens =&quot;${androidscreensmall}&quot;"/>
+		
+	<property name="normalscreens" value="android:normalScreens =&quot;${androidscreennormal}&quot;"/>
+		
+		<if>
+			<equals arg1= "${androidscreenlarge}" arg2= "false"/>
+			<then>
+					<property name="largescreens" value=""/>
+			</then>
+			<else>
+					<property name="largescreens" value="android:largeScreens =&quot;${androidscreenlarge}&quot;"/>
+			</else>
+		</if>
+		
+		<script language="javascript"><![CDATA[
+			var version = parseInt(project.getProperty('andtargetsdkkey'));
+			project.setProperty('supportxlargescreens', version > 8);
+		]]></script>
+		
+		<if>
+			<not>
+				<equals arg1="${androidscreenextralarge}" arg2="$${androidscreenextralarge}"/>
+			</not>
+			<then>
+				<if>
+					<and>
+						<equals arg1= "${androidscreenextralarge}" arg2= "true"/>
+						<equals arg1= "${supportxlargescreens}" arg2= "true"/>
+					</and>
+					<then>
+						<property name="xlargescreens" value="android:xlargeScreens =&quot;${androidscreenextralarge}&quot;"/>
+					</then>
+					<else>
+						<property name="xlargescreens" value=""/>
+					</else>						
+				</if>
+			</then>
+		</if>
+		<if>
+			<equals arg1= "${androidscreenresizeable}" arg2= "false"/>
+			<then>
+					<property name="resizeable" value=""/>
+			</then>
+			<else>
+					<property name="resizeable" value="android:resizeable =&quot;${androidscreenresizeable}&quot;"/>
+			</else>
+		</if>
+
+		<echo>Any Density: ${anydensity}</echo>
+		<echo>Small Screen: ${smallscreens} </echo>
+		<echo>Normal Screen: ${normalscreens}</echo>
+		<echo>Large Screen: ${largescreens} </echo>
+		<echo>xLarge Screen: ${xlargescreens} </echo>
+		<echo>Resizable: ${resizeable}</echo>
+		<property name="screens" value="${anydensity} ${smallscreens} ${normalscreens} ${largescreens} ${xlargescreens} ${resizeable}"/>
+		<replace file="${app.dir}/AndroidManifest.xml" token="$SUPPORT_SCREENS" value="&lt;supports-screens ${screens}/&gt;"/> 
+		
+
+		<if>
+			<equals arg1= "${andtargetsdkkey}" arg2= "None"/>
+			<then>
+				<if>
+					<or>
+					<equals arg1= "${usesmaps}" arg2= "true"/>
+					<equals arg1= "${mapv2keyadded}" arg2= "true"/>
+					</or>
+					<then>
+						<property name="buildtargetsdkversion" value="Google Inc.:Google APIs:7"/>
+					</then>
+					<else>
+						<property name="buildtargetsdkversion" value="android-7"/>
+					</else>
+				</if>
+			</then>
+			<else>
+				<if>
+					<or>
+					<equals arg1= "${usesmaps}" arg2= "true"/>
+					<equals arg1= "${mapv2keyadded}" arg2= "true"/>
+					</or>
+					<then>
+						<property name="buildtargetsdkversion" value="Google Inc.:Google APIs:${andtargetsdkkey}"/>	
+					</then>
+					<else>
+						<property name="buildtargetsdkversion" value="android-${andtargetsdkkey}"/>
+					</else>
+				</if>
+			</else>						
+		</if>
+		<replace file="${app.dir}/default.properties" token="$ANDROIDAPI" value="${buildtargetsdkversion}"/>
+		<replace file="${app.dir}/project.properties" token="$ANDROIDAPI" value="${buildtargetsdkversion}"/>
+		
+		<!--
+			***********************************************************
+			Handling install location for auto or preferExternal
+			***********************************************************	
+		-->
+		<if>
+    		<equals arg1="${installlocation}" arg2="$${installlocation}"/>
+    		<then>
+				<echo>Install location not defined </echo>				
+				<replace file="${app.dir}/AndroidManifest.xml" token="$INSTALLLOCATION" value=""/>
+    		</then>
+			<else>
+				<echo>Install location value defined:${installlocation}</echo>				
+				<replace file="${app.dir}/AndroidManifest.xml" token="$INSTALLLOCATION" value="android:installLocation=&quot;${installlocation}&quot;"/>
+			</else>			
+		</if>
+
+		<!--
+			***********************************************************
+				Replacing $PERMISSIONS_ALL in AndroidManifest.xml
+			***********************************************************	
+		-->
+		<var name="pstr" value=""/>
+		<if>
+				<not>
+					<equals arg1="${androidmanifestpermissions}" arg2="$${androidmanifestpermissions}"/>
+				</not>
+				<then>
+					<for list="${androidmanifestpermissions}" param="letter">
+						<sequential>
+							<var name="tperm" value="&lt;uses-permission android:name=&quot;android.permission.@{letter}&quot;/&gt;${line.separator}"/>
+							<var name="pstr" value="${pstr} ${tperm}"/>
+						</sequential>
+					</for>
+					<echo>Permissions set:</echo>
+					<echo>${pstr}</echo>
+					<replace file="${app.dir}/AndroidManifest.xml" token="$PERMISSIONS_ALL" value="${pstr}"/>
+			</then>
+		</if>
+
+		<!--
+			**********************************************************************************************************************
+				Replacing $IMPORT_FUNCTION_CLASS, $IMPORT_GLOBALSINIT_CLASS, $OVERRIDE_STARTUPMETHOD in AndroidManifest.xml
+			**********************************************************************************************************************	
+		-->
+		<if>
+			<equals arg1="${nativecodegen}" arg2="true"/>
+			<then>
+				<property name="nativecode.pkg" value="com.konylabs.NativeCodeApp"/>
+				<propertyregex property="nativecode.pkg.path" input="${nativecode.pkg}" regexp="\." replace="//"/>
+				<mkdir dir="${app.dir}/src/${nativecode.pkg.path}"/>
+				<copy todir="${app.dir}/src/${nativecode.pkg.path}" overwrite="true">
+					<fileset dir="${android.nativedir}">
+						<include name="*.java"/>
+					</fileset>
+				</copy>
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$IMPORT_FUNCTION_CLASS" value="import com.konylabs.vm.Function;" />
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$IMPORT_GLOBALSINIT_CLASS" value="import ${nativecode.pkg}.Globalsinit;" />
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$OVERRIDE_STARTUPMETHOD" value="
+					//Donot remove this method. This method returns the startup method for Application. ${line.separator}
+					public Function getStartupMethod(){${line.separator}
+						return new Function(){${line.separator}
+
+							public Object[] execute(Object[] arg0) throws Exception {${line.separator}
+								Globalsinit.initializeApp(null);${line.separator}
+								return null;${line.separator}
+							}${line.separator}
+			
+						};${line.separator}
+					}${line.separator}"/>
+			</then>
+			<else>
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$IMPORT_FUNCTION_CLASS" value="" />
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$OVERRIDE_STARTUPMETHOD" value="" />
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$IMPORT_GLOBALSINIT_CLASS" value="" />
+			</else>
+		</if>
+    </target>
+    
+	<target name="copyassets">
+        <echo>Copying the resources to android assets</echo>
+		<if>
+			<equals arg1="${build.option}" arg2="release"/>
+			<then>
+				<property name="appURLProp" value=""/>
+			</then>
+			<else>
+				<property name="appURLProp" value="http://${machineip}:${jetty.portnum}/${appid}r/s"/>
+			</else>
+		</if>
+
+		<if>
+			<equals arg1="${splash.image}" arg2="$${splash.image}"/>
+			<then>
+				<property name="splashScreenImg" value=""/>
+			</then>
+			<else>
+				<property name="splashScreenImg" value="${splash.image}"/>
+				<!-- copy file="${resfolder}/build/${splash.image}" tofile="${app.dir}/res/drawable/${splash.image}" overwrite="true"/-->
+			</else>
+		</if>
+        <copy file="application.properties" tofile="${assets.dir}/application.properties" overwrite="true"/>
+		<concat fixlastline="yes" destfile="${assets.dir}/application.properties">
+			Splash-FG: ${splash.fgcolor}
+			Splash-BG: ${splash.bgcolor}
+			Splash-LI: ${splash.li}
+			Splash-IMG: ${splashScreenImg}
+			Splash-ANIM-DURATION: ${splash.animation.duration}
+			Splash-ANIM-IMGLIST: ${splash.animation.images}			
+            Splash-VIDEO: ${splash.video}
+            Splash-VIDEO-INTERRUPTIBLE: ${splash.video.interruptable}
+			Splash-ORIENTATION : ${splash.orientation}
+			BUILD: ${build.option}
+			AppMode : ${hybridmode}
+			DevLang : ${dev.language}
+			EnableActionBar : ${actionbar}
+			AllowSelfSignedCerts : ${allowselfsignedcertificates}
+			UseGooglePlayLocationServices : ${usegoogleplaylocationservices.local}
+		</concat>
+		<!--concat fixlastline="yes" destfile="${assets.dir}/application.properties" append="true">App-URL=http://${machineip}:${jetty.portnum}/${appid}r/s</concat>
+		<concat fixlastline="yes" destfile="${assets.dir}/application.properties" append="true">Splash-FG: ${splash.fgcolor}</concat>
+		<concat fixlastline="yes" destfile="${assets.dir}/application.properties" append="true">Splash-BG: ${splash.bgcolor}</concat>
+		<concat fixlastline="yes" destfile="${assets.dir}/application.properties" append="true">BUILD: ${build.option}</concat-->
+
+        <replace file="${assets.dir}/application.properties" token="^(App-URL.+$)" value="App-URL=http://${machineip}:${jetty.portnum}/${appid}r/s" />
+	
+        <available file="${i18n.android.properties}" type="dir" property="locales.present" /> 
+        <if>
+            <equals arg1="${locales.present}" arg2="true" /> 
+            <then>
+                <copy todir="${assets.dir}" overwrite="true">
+                    <fileset dir="${i18n.android.properties}" includes="*.prop"/>
+                </copy>
+				<if>
+					<or>
+					<equals arg1="${hybridmode}" arg2="wrapper"/>
+					<equals arg1="${hybridmode}" arg2="mixed"/>
+					</or>
+					<then>
+						<mkdir dir="${assets.dir}/web"/>
+						<mkdir dir="${assets.dir}/web/resources"/>
+						<mkdir dir="${assets.dir}/web/resources/strings"/>
+						<copy todir="${assets.dir}/web/resources/strings" overwrite="true">
+							<fileset dir="${resfolder}/i18n/iphone_properties" includes="*.prop"/>
+							<mapper type="glob" from="*.prop" to="*.js"/>
+						</copy>
+						<replaceregexp match="(.*)" replace="var i18nObject = {\1}" flags="s" byline="false">
+							<fileset dir="${assets.dir}/web/resources/strings" includes="*.js"/>
+						</replaceregexp>
+						<replace dir="${assets.dir}/web/resources/strings">
+							<include name="*.js"/>
+							<replacefilter token="&quot;=&quot;" value="&quot;:&quot;"/>
+							<replacefilter token="&quot;;" value="&quot;,"/>
+						</replace>
+					</then>
+				</if>
+            </then>
+        </if>
+
+		<if>
+			<equals arg1="${dev.language}" arg2="js"/>
+			<then>
+				<if>
+					<equals arg1="${secureappsource}" arg2="$${secureappsource}"/>
+					<then>
+						<property name="secureappsource.local" value="true"/>
+					</then>
+					<else>
+						<property name="secureappsource.local" value="${secureappsource}"/>
+					</else>
+				</if>
+				<ant dir="." antfile="build-jssource.xml" inheritAll="true">
+					<property name="app.dir" value="${app.dir}"/>
+					<property name="assets.dir" value="${assets.dir}"/>	
+					<property name="jssrc.dir" value="${jssrc.dir}"/>
+					<property name="packagepath" value="${packagepath}"/>
+					<property name="secureappsource" value="${secureappsource.local}"/>
+				</ant>
+			</then>
+			<else>
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$APP_SOURCE_LOC" value="1" />
+				<if>
+					<equals arg1="${nativecodegen}" arg2="$${nativecodegen}"/>
+					<then>
+						<condition property="isBiggerCode">
+							<length file="../server/kbf/androidkonyapp.o" when="gt" length="1036288" />
+						</condition>
+						<if>
+							<equals arg1="${isBiggerCode}" arg2="true" />
+							<then>
+								<copy file="../server/kbf/androidkonyapp.o" tofile="${assets.dir}/${bytecode.file}.mp3" overwrite="true"/>
+							</then>
+							<else>
+								<copy file="../server/kbf/androidkonyapp.o" tofile="${assets.dir}/${bytecode.file}" overwrite="true"/>
+							</else>
+						</if>
+					</then>	
+				</if>
+			</else>
+		</if>
+		
+		<if>
+			<equals arg1="${locales}" arg2="" />
+			<then>
+				<property name="langlocales.present" value="false"/>	
+			</then>
+			<else>
+				<property name="langlocales.present" value="true"/>	
+			</else>
+		</if>
+		<if>
+			<and>
+				<equals arg1="${common.present}" arg2="true"/>
+				<equals arg1="${langlocales.present}" arg2="true"/>
+			</and>
+			<then>
+				<for list="${locales}" param="letter">
+					<sequential>
+						<propertyregex property="folderval" override="true"
+							  input="@{letter}"
+							  regexp="([^\.]*)\_([^\.]*)"
+							  replace="drawable-\1-r\2"
+							  casesensitive="false" />
+						<if>
+							<equals arg1="${folderval}" arg2="$${folderval}"/>
+							<then>
+								<property name="folderval" value="drawable-@{letter}"/>
+							</then>
+						</if>
+						<copy todir="${app.dir}/res/${folderval}" overwrite="true">
+							<fileset dir="${resfolder}/${resources.common.folder}/@{letter}" includes="**/**"/>
+						</copy>
+					</sequential>
+				</for>
+    		</then>
+		</if>
+		
+		<available file="${resfolder}/fonts" type="dir" property="fonts.present"/>
+		<mkdir dir="${assets.dir}/fonts"/>
+    	<if>
+    		<equals arg1="${fonts.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${assets.dir}/fonts" overwrite="true">
+    	            <fileset dir="${resfolder}/fonts" includes="*.*"/>
+    	        </copy>
+    		</then>
+    	</if>
+	
+		<if>
+			<equals arg1="${platform.folder}" arg2="$${platform.folder}"/>
+			<then>
+				<property name="platform.folder" value="android"/>	
+			</then>
+		</if>
+
+		<available file="${resfolder}/fonts/${platform.folder}" type="dir" property="androidfonts.present"/>
+    	<if>
+    		<equals arg1="${androidfonts.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${assets.dir}/fonts" overwrite="true">
+    	            <fileset dir="${resfolder}/fonts/${platform.folder}" includes="*.*"/>
+    	        </copy>
+    		</then>
+		</if>
+    	
+		<available file="${appfolder}/${outputdir}/${codedir}/themes/android" type="dir" property="androidthemes.present"/>
+		<if>
+    		<equals arg1="${androidthemes.present}" arg2="true"/>
+			<then>
+				<echo>Copying theme files</echo>
+				<copy todir="${assets.dir}" overwrite="true">
+					<fileset dir="${appfolder}/${outputdir}/${codedir}/themes/android" includes="*.theme"/>
+				</copy>
+			</then>	
+		</if>
+		
+    	<!--Copying App icon images -->
+    	<copy todir="${assets.dir}" overwrite="true">
+    		<fileset dir="${resfolder}/build" includes="*.*"/>
+    	</copy>
+		
+		<if>
+			<equals arg1="${hybridmode}" arg2="native"/>
+			<then>
+				<antcall target="copynativeresources"/>
+				<antcall target="copyninepatchimages"/>
+			</then>
+		<else>
+			<if>
+				<equals arg1="${hybridmode}" arg2="wrapper"/>
+				<then>
+					<antcall target="copy-spa-resources"/>
+					<antcall target="copysplashresources"/>
+				</then>
+			<else>
+				<if>
+					<equals arg1="${hybridmode}" arg2="mixed"/>
+					<then>
+						<antcall target="copynativeresources"/>
+						<antcall target="copy-spa-resources"/>
+						<antcall target="copyninepatchimages"/>
+					</then>
+				</if>
+			</else>
+			</if>
+		</else>
+		</if>
+    	
+    	<if>
+    		<not>
+    			  <equals arg1="${logo}" arg2=""/>
+    		</not>
+    		<then>
+    			<echo>Copying icon file ${logo} </echo>
+    			<copy file="${app.dir}/res/drawable/${logo}" tofile="${app.dir}/res/drawable/icon.png" overwrite="true" preservelastmodified="true"/>
+    		</then>
+    	</if> 
+
+    	<mkdir dir="${libs.dir}"/>
+    	<available file="${customlibs.dir}/${platform.folder}" type="dir" property="libraries.dir.available"/>
+    	<if>
+	    	<!--Copying 3rd party libraries -->
+			<equals arg1="${libraries.dir.available}" arg2="true"/>
+    		<then>
+    			<echo>Copying third party libraries</echo>
+				<copy todir="${libs.dir}" overwrite="true" >
+					<fileset dir="${customlibs.dir}/${platform.folder}" includes="**/*.*"/>
+				</copy>
+			</then>
+			<else>
+				<echo message="No 3rd party libraries found"></echo>
+			</else>
+    	</if>
+		<!-- Done: Copying 3rd party libraries  -->
+		<!-- Copying wrapper classes to src folder-->
+		<available file="${customlibs.src.dir}/${platform.folder}" type="dir" property="ffi.dir.available"/>
+		<if>
+			<equals arg1="${ffi.dir.available}" arg2="true"/>
+			<then>
+				<echo message="Copying ffi templates to src folder"/> 
+				<copy todir="${src.dir}" overwrite="true">
+					<fileset dir="${customlibs.src.dir}/${platform.folder}" includes="**/*.*"/>
+				</copy>
+			</then>
+		</if>
+		<!-- Done: Copying wrapper classes to src folder-->
+		
+		<!--Copying custom widget libraries -->
+		<available file="${customwidgets.dir}/${platform.folder}" type="dir" property="cwlibs.dir.available"/>
+    	<if>
+	    	
+			<equals arg1="${cwlibs.dir.available}" arg2="true"/>
+    		<then>
+    			<echo>Copying third party libraries</echo>
+				<copy todir="${libs.dir}" overwrite="true" >
+					<fileset dir="${customwidgets.dir}/${platform.folder}" includes="*.*"/>
+				</copy>
+			</then>
+			<else>
+				<echo message="No custom widget libraries found"></echo>
+			</else>
+    	</if>
+		<!-- Done: Copying custom widget libraries  -->
+		<!-- Copying custom widget classes to src folder-->
+		<available file="${customwidgets.src.dir}/${platform.folder}" type="dir" property="cwsrc.dir.available"/>
+		<if>
+			<equals arg1="${cwsrc.dir.available}" arg2="true"/>
+			<then>
+				<echo message="Copying custom widget templates to src folder"/> 
+				<copy todir="${src.dir}" overwrite="true">
+					<fileset dir="${customwidgets.src.dir}/${platform.folder}" includes="**/*.*"/>
+				</copy>
+			</then>
+		</if>
+		<!-- Done: Copying custom widget src files -->
+		
+    </target>
+    
+	<target name="copynativeresources">
+        <echo>Copying the native resources to android assets</echo>
+	    
+    	<available file="${resfolder}/${resources.common.folder}" type="dir" property="common.present"/>
+    	<if>
+    		<equals arg1="${common.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}/${resources.common.folder}" includes="*.*"  excludes="*.mp4 *.mov *.avi *.mjpeg *.m4v *.cer"/>
+    	        </copy>
+				<copy todir="${app.dir}/res/raw" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}/${resources.common.folder}" includes="*.mp4 *.mov *.avi *.mjpeg *.m4v *.cer"/>
+    	        </copy>
+    		</then>
+    		<else>
+    	        <copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}" includes="*.*" excludes="*.ttf *.otf"/>
+    	        </copy>
+    		</else>
+    	</if>
+		
+		<available file="${resfolder}/${resources.category.common.folder}" type="dir" property="category.common.present"/>
+    	<if>
+    		<equals arg1="${category.common.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}/${resources.category.common.folder}" includes="*.*"  excludes="*.mp4 *.mov *.avi *.mjpeg *.m4v *.cer"/>
+    	        </copy>
+				<copy todir="${app.dir}/res/raw" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}/${resources.category.common.folder}" includes="*.mp4 *.mov *.avi *.mjpeg *.m4v *.cer"/>
+    	        </copy>
+    		</then>
+    		<else>
+    	        <copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}" includes="*.*" excludes="*.ttf *.otf"/>
+    	        </copy>
+    		</else>
+    	</if>
+		
+		<if>
+			<equals arg1="${resources.platform.folder}" arg2="$${resources.platform.folder}"/>
+			<then>
+				<property name="resources.platform.folder" value="mobile/native/android"/>	
+			</then>
+		</if>
+		
+		<if>
+			<equals arg1="${platform.folder}" arg2="$${platform.folder}"/>
+			<then>
+				<property name="platform.folder" value="android"/>	
+			</then>
+		</if>
+
+		<available file="${resfolder}/${resources.platform.folder}" type="dir" property="richandroid.present"/>
+    	<if>
+    		<equals arg1="${richandroid.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+					<dirset dir="${resfolder}/${resources.platform.folder}" includes="drawable*"/>
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="drawable*/*.*"/>
+    	        </copy>
+				<copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="*.*" excludes="*.mp4 *.mov *.avi *.mjpeg *.m4v"/>
+    	        </copy>
+				<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+					<dirset dir="${resfolder}/${resources.platform.folder}" includes="layout*"/>
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="layout*/*.*"/>
+    	        </copy>
+				<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+					<dirset dir="${resfolder}/${resources.platform.folder}" includes="xml*"/>
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="xml*/*.*"/>
+    	        </copy>
+				<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+					<dirset dir="${resfolder}/${resources.platform.folder}" includes="values*"/>
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="values*/*.*"/>
+				</copy>
+				<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+					<dirset dir="${resfolder}/${resources.platform.folder}" includes="raw*"/>
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="raw*/*.*"/>
+				</copy>
+				<copy todir="${app.dir}/res/raw" overwrite="true" preservelastmodified="true">
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="*.mp4 *.mov *.avi *.mjpeg *.m4v"/>
+				</copy>
+				<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+					<dirset dir="${resfolder}/${resources.platform.folder}" includes="anim*"/>
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="anim*/*.*"/>
+				</copy>
+				<available file="${resfolder}/${resources.platform.folder}/assets" type="dir" property="android.res.assets.present"/>
+				<if>
+					<equals arg1="${android.res.assets.present}" arg2="true"/>
+					<then>
+						<copy todir="${assets.dir}" overwrite="true" preservelastmodified="true">
+							<dirset dir="${resfolder}/${resources.platform.folder}/assets" />
+							<fileset dir="${resfolder}/${resources.platform.folder}/assets" />
+						</copy>
+					</then>
+				</if>
+    		</then>
+    		<else>
+				<available file="${resfolder}/${platform.folder}" type="dir" property="android.present"/>
+				<if>
+					<equals arg1="${android.present}" arg2="true"/>
+					<then>
+						<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+							<dirset dir="${resfolder}/${platform.folder}" includes="drawable*"/>
+							<fileset dir="${resfolder}/${platform.folder}" includes="drawable*/*.*"/>
+						</copy>
+						<copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+							<fileset dir="${resfolder}/${platform.folder}" includes="*.*"/>
+						</copy>
+					</then>
+				</if>
+    		</else>
+    	</if>
+		<if>
+    		<equals arg1="${common.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${assets.dir}" overwrite="true" preservelastmodified="true"> 
+    	            <fileset dir="${resfolder}/${resources.common.folder}" includes="*.cer" />
+    	        </copy>
+			</then>
+    	</if>
+		<if>
+    		<equals arg1="${category.common.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${assets.dir}" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}/${resources.category.common.folder}" includes="*.cer" />
+    	        </copy>
+			</then>
+    	</if>
+ 	</target>
+	
+	<target name="copyninepatchimages">
+        <echo>Copying the nine patch images and delete the actual png image in android drawable folder</echo>
+		<for param="file">
+			<path>
+				<fileset dir="${app.dir}/res/drawable">
+					<include name="**/*.9.png"/>
+				</fileset>
+			</path>
+			<sequential>    			
+				<antcall target="check-for-actual-png-file">
+					<param name="actual-png" value="@{file}" />
+				</antcall>		
+			</sequential>				
+		</for>
+	</target>
+	
+	<target name="check-for-actual-png-file">	
+		<basename file="${actual-png}" property="actual-pngfile-name" />				
+		<propertyregex property="actual.png" input="${actual-pngfile-name}" regexp="(.*)\.9\.png" select="\1.png" casesensitive="false" />
+		<delete file="${app.dir}/res/drawable/${actual.png}" />
+	</target>
+	
+	<target name="copy-spa-resources">
+		<mkdir dir="${assets.dir}/web"/>
+		<mkdir dir="${assets.dir}/web/images"/>
+		
+		<available file="${webmodule.loc}" type="dir" property="webres.present"/>
+    	<if>
+    		<equals arg1="${webres.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${assets.dir}/web" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${webmodule.loc}" includes="**/*.*"/>
+    	        </copy>
+			</then>
+    	</if>
+		
+		
+		<foreach target="copy-spa-image-folder" param="spaimgdir.res" inheritall="true">
+			<path>
+				<dirset dir="${resfolder}/${resources.mobile.web}/spaandroid">
+					<include name="images*"/>
+				</dirset>
+			</path>
+		</foreach>
+		
+		<available file="${hybridmode.dir}" type="dir" property="hybridmode.present"/>
+    	<if>
+    		<equals arg1="${hybridmode.present}" arg2="true"/>
+    		<then>    	    
+    	        <copy todir="${assets.dir}/web" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${hybridmode.dir}" includes="**/*.*"/>
+    	        </copy>
+			</then>
+    	</if>
+		<copy file="extres/nativeplatform.js" tofile="${assets.dir}/web/appjs/nativeplatform.js" overwrite="true"/>
+		
+	</target>
+	
+ 	<target name="copy-spa-image-folder">
+		<propertyregex 	property="spaimgdir.assets" input="${spaimgdir.res}" regexp=".*images(.*)$" select="\1"/>
+		<mkdir dir="${assets.dir}/web/images/${spaimgdir.assets}"/>
+		
+		<available file="${resfolder}/${resources.common.folder}" type="dir" property="common.present"/>
+    	<if>
+    		<equals arg1="${common.present}" arg2="true"/>
+    		<then>
+				<copy todir="${assets.dir}/web/images/${spaimgdir.assets}" overwrite="true" preservelastmodified="true">
+					<fileset dir="${resfolder}/${resources.common.folder}" includes="*.*" excludes="*.cer" />
+				</copy>
+			</then>
+		</if>
+		
+		<available file="${resfolder}/${resources.category.common.folder}" type="dir" property="category.common.present"/>
+		<if>
+    		<equals arg1="${category.common.present}" arg2="true"/>
+    		<then>
+				<copy todir="${assets.dir}/web/images/${spaimgdir.assets}" overwrite="true" preservelastmodified="true">
+					<fileset dir="${resfolder}/${resources.category.common.folder}" includes="*.*" excludes="*.cer" />
+				</copy>
+			</then>
+		</if>
+		
+		<available file="${resfolder}/${resources.mobile.web}/spaandroid" type="dir" property="spaandroid.present"/>
+    	<if>
+			<equals arg1="${spaandroid.present}" arg2="true"/>
+    		<then>
+				<copy todir="${assets.dir}/web/images/${spaimgdir.assets}" overwrite="true" preservelastmodified="true">
+					<fileset dir="${resfolder}/${resources.mobile.web}/spaandroid" includes="*.*"/>
+				</copy>
+			</then>
+		</if>
+		
+		<copy todir="${assets.dir}/web/images/${spaimgdir.assets}" overwrite="true" preservelastmodified="true">
+			<fileset dir="${resfolder}/${resources.mobile.web}/spaandroid/images${spaimgdir.assets}" includes="*.*"/>
+		</copy>
+		
+		<echo message="---webcommons.plugin.loc---- ${webcommons.plugin.loc}"/>
+		<echo message="---assets.dir---- ${assets.dir}/web/images/${spaimgdir.assets}"/>
+		<available file="${webcommons.plugin.loc}/common/wap/inputdata/webfiles/iphone" type="dir" property="tc.images.present"/>
+		<if>
+		<equals arg1="${tc.images.present}" arg2="true"/>
+		<then>
+			<echo message = "Came inside the tc common images"/>
+			<copy todir="${assets.dir}/web/images/${spaimgdir.assets}" overwrite="true" preservelastmodified="true">
+				<fileset dir="${webcommons.plugin.loc}/common/wap/inputdata/webfiles/iphone" includes="*.*"/>
+			</copy>
+		</then>
+		</if>
+		
+	</target>
+    
+	<target name="copysplashresources">
+		<propertyregex property="splashAnimImages" input="${splash.animation.images}" regexp="," replace=" "/>
+		<echo>Copying logo and splash resources *${logo}* *${splashScreenImg}* *${splashAnimImages}*</echo>
+    	<available file="${resfolder}/${resources.common.folder}" type="dir" property="common.present"/>
+    	<if>
+    		<equals arg1="${common.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}/${resources.common.folder}" includes="${logo} ${splashScreenImg} ${splashAnimImages}"/>
+    	        </copy>
+				<copy todir="${app.dir}/res/raw" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}/${resources.common.folder}" includes="${splash.video}"/>
+    	        </copy>
+    		</then>
+    		<else>
+    	        <copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}" includes="${logo} ${splashScreenImg} ${splashAnimImages}"/>
+    	        </copy>
+    		</else>
+    	</if>
+		
+		<available file="${resfolder}/${resources.category.common.folder}" type="dir" property="category.common.present"/>
+    	<if>
+    		<equals arg1="${category.common.present}" arg2="true"/>
+    		<then>
+    	        <copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}/${resources.category.common.folder}" includes="${logo} ${splashScreenImg} ${splashAnimImages}"/>
+    	        </copy>
+				<copy todir="${app.dir}/res/raw" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}/${resources.category.common.folder}" includes="${splash.video}"/>
+    	        </copy>
+    		</then>
+    		<else>
+    	        <copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+    	            <fileset dir="${resfolder}" includes="${logo} ${splashScreenImg} ${splashAnimImages}"/>
+    	        </copy>
+    		</else>
+    	</if>
+		
+		<if>
+			<equals arg1="${resources.platform.folder}" arg2="$${resources.platform.folder}"/>
+			<then>
+				<property name="resources.platform.folder" value="mobile/native/android"/>	
+			</then>
+		</if>
+		
+		<if>
+			<equals arg1="${platform.folder}" arg2="$${platform.folder}"/>
+			<then>
+				<property name="platform.folder" value="android"/>	
+			</then>
+		</if>
+
+		<available file="${resfolder}/${resources.platform.folder}" type="dir" property="richandroid.present"/>
+    	<if>
+    		<equals arg1="${richandroid.present}" arg2="true"/>
+    		<then>
+			    <copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+					<dirset dir="${resfolder}/${resources.platform.folder}" includes="drawable*"/>
+    	        </copy>
+				<if>
+					<not>
+						<equals arg1="${logo}" arg2=""/>
+					</not>
+					<then>
+					    <copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+							<fileset dir="${resfolder}/${resources.platform.folder}" includes="drawable*/${logo}"/>
+						</copy>
+					</then>
+				</if>
+				<if>
+					<not>
+						<equals arg1="${splashScreenImg}" arg2=""/>
+					</not>
+					<then>
+					    <copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+							<fileset dir="${resfolder}/${resources.platform.folder}" includes="drawable*/${splashScreenImg}"/>
+						</copy>
+					</then>
+				</if>
+				
+				<for list="${splash.animation.images}" delimiter="," param = "val">
+					<sequential>
+					<echo>copying @{val} </echo>
+					<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+						<fileset dir="${resfolder}/${resources.platform.folder}" includes="drawable*/@{val}"/>
+					</copy>
+					</sequential>
+				</for>
+				<copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="${logo} ${splashScreenImg} ${splashAnimImages}"/>
+    	        </copy>
+				<if>
+					<not>
+						<equals arg1="${splash.video}" arg2=""/>
+					</not>
+					<then>
+						<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+							<dirset dir="${resfolder}/${resources.platform.folder}" includes="raw*"/>
+							<fileset dir="${resfolder}/${resources.platform.folder}" includes="raw*/${splash.video}"/>
+						</copy>
+					</then>
+				</if>
+				<copy todir="${app.dir}/res/raw" overwrite="true" preservelastmodified="true">
+					<fileset dir="${resfolder}/${resources.platform.folder}" includes="${splash.video}"/>
+				</copy>
+    		</then>
+    		<else>
+				<available file="${resfolder}/${platform.folder}" type="dir" property="android.present"/>
+				<if>
+					<equals arg1="${android.present}" arg2="true"/>
+					<then>
+						<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+							<dirset dir="${resfolder}/${platform.folder}" includes="drawable*"/>
+						</copy>
+						<for list="${splash.animation.images}" delimiter="," param = "val">
+							<sequential>
+								<echo>copying @{val} </echo>
+								<copy todir="${app.dir}/res" overwrite="true" preservelastmodified="true">
+									<fileset dir="${resfolder}/${platform.folder}" includes="drawable*/@{val}"/>
+								</copy>
+							</sequential>
+						</for>
+						<copy todir="${app.dir}/res/drawable" overwrite="true" preservelastmodified="true">
+							<fileset dir="${resfolder}/${platform.folder}" includes="${logo} ${splashScreenImg} ${splashAnimImages}"/>
+						</copy>
+					</then>
+				</if>
+    		</else>
+    	</if>
+ 	</target>
+	
+    <target name="compile">
+        <echo>Packaging the android ${appid} application</echo>
+		
+		<if>
+			<available file="${plugin.loc}/lib/KonyAntScript.jar"/>
+				<then>
+					<exec-shell executable="cmd" failonerror="true" failifexecutionfails="true" >
+						<arg line='/c "ant -buildfile ${app.dir}/build.xml debug"'/>
+					</exec-shell>
+					<if>
+						<equals arg1="${build.option}" arg2="release"/>
+						<then>
+							<exec-shell executable="cmd" failonerror="true" failifexecutionfails="true" >
+								<arg line='/c "ant -buildfile ${app.dir}/build.xml release"'/>
+							</exec-shell>
+						</then>
+					</if>
+				</then>
+				<else>
+					<exec executable="cmd.exe" failonerror="true" failifexecutionfails="true" >
+						<arg line='/c "ant.bat -buildfile ${app.dir}/build.xml debug"'/>
+					</exec>
+					<if>
+						<equals arg1="${build.option}" arg2="release"/>
+						<then>
+							<exec executable="cmd.exe" failonerror="true" failifexecutionfails="true" >
+								<arg line='/c "ant.bat -buildfile ${app.dir}/build.xml release"'/>
+							</exec>
+						</then>
+					</if>
+				</else>
+		</if>
+
+    </target>
+    
+    <target name="publish">
+        <echo>Preparing the package for publish</echo>
+        <copy file="${app.dir}/bin/${appid}-debug.apk" tofile="${dist.dir}/luavmandroid.apk"/>
+    </target>
+    
+    <target name="all" depends="init, copyjar, copybuildfile, copyextlibs, gen, copyassets, compile, publish">
+    </target>
+</project>

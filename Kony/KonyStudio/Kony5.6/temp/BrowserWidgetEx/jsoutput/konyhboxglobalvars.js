@@ -1,0 +1,2 @@
+        var hbxHeader;
+        var hbxFooter;

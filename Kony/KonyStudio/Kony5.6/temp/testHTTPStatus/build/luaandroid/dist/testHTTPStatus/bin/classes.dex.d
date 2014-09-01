@@ -1,0 +1,24 @@
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes.dex : \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/konylabs/js/appsrc/PaaSLicenseSource.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/BuildConfig.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$anim.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$attr.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$drawable.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$fonts.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$id.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$layout.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$location.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$net.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$string.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R$style.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/R.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/classes/com/orgname/testHTTPStatus/testHTTPStatus.class \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/dexedLibs/konychart2d3dinterface-05873ce144e01cfd8f6e712eabd3a121.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/dexedLibs/annotations-d20d5f024a30e717276a4eec9bf45fde.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/dexedLibs/multiparthttppost-bea553c7fc38d51324a9a58a31ebf412.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/dexedLibs/konycontacts-a46939787c249dfb9e15712e5c760863.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/dexedLibs/konychartinterface-893f91cb87e40c32642b16bd80ea7e96.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/dexedLibs/konychart2d3dinterfaceNeXt-20609d680653e635169bec6af3c55e84.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/dexedLibs/konywidgets-a2450a05d6abfe71aead89efab13f665.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/dexedLibs/konyweb-cbbf5b5c43a4851a97f17bc8399fc903.jar \
+/MyMachine/DevMachine/Workspaces/Kony/KonyStudio/Kony5.6/temp/testHTTPStatus/build/luaandroid/dist/testHTTPStatus/bin/dexedLibs/android-support-v4-5fd4a58692df10bbe1f83f80f206e302.jar \

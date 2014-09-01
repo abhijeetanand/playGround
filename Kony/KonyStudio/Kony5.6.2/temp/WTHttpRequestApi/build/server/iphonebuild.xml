@@ -1,0 +1,646 @@
+<!--@Note: This is read only file and not being used at runtime,if we want to update anything do it in zip file \trunk\guieditor\lib\build.zip --> 
+<project name="Kony" basedir="." default="build">
+   
+	<target name="build">
+
+		<unset name="logo"/>
+		<var name="logo" value="${logo_iphone}"/>
+		
+		<unset name="splash.image"/>
+		<var name="splash.image" value="${splash.image_iphone}"/>
+		
+		<unset name="splash.video"/>
+		<var name="splash.video" value="${splash.video_iphone}"/>
+		
+		<unset name="splash.animation.images"/>
+		<var name="splash.animation.images" value="${splash.animation.images_iphone}"/>
+		
+		<delete dir="${codedir}" failonerror="false"/>
+		<mkdir dir="${codedir}"/>
+		<if>
+			<equals arg1="${iphone.hybridmode}" arg2="mixed"/>
+			<then>
+				<copy todir="${codedir}" overwrite="true">
+		   		    <fileset dir="../../${outputdir}/${codedir}hybrid" excludes="startup.lua,tcchannel.lua,rcchannel.lua" casesensitive="false"/>
+		   	 	</copy>
+				<available file="../../${outputdir}/${codedir}hybrid/iphone" type="dir" property="iphonelua.present"/>
+				<if>
+					<equals arg1="${iphonelua.present}" arg2="true" />
+					<then>
+						<copy todir="${codedir}" overwrite="true">
+				     		<fileset dir="../../${outputdir}/${codedir}hybrid/iphone" excludes="startup.lua,tcchannel.lua,rcchannel.lua" casesensitive="false"/>
+			    		</copy>
+					</then>
+				</if>
+			</then>
+			<else>
+				<if>
+					<equals arg1="${iphone.hybridmode}" arg2="native"/>
+					<then>
+						<copy todir="${codedir}" overwrite="true">
+				   		    <fileset dir="../../${outputdir}/${codedir}" excludes="startup.lua,tcchannel.lua,rcchannel.lua" casesensitive="false"/>
+				   	 	</copy>
+						<available file="../../${outputdir}/${codedir}/iphone" type="dir" property="iphonelua.present"/>
+						<if>
+							<equals arg1="${iphonelua.present}" arg2="true" />
+							<then>
+								<copy todir="${codedir}" overwrite="true">
+						     		<fileset dir="../../${outputdir}/${codedir}/iphone" excludes="startup.lua,tcchannel.lua,rcchannel.lua" casesensitive="false"/>
+					    		</copy>
+							</then>
+						</if>
+					</then>
+					<else>
+						<copy todir="${codedir}" overwrite="true">
+						<fileset dir="../../${outputdir}/${codedir}wrapper" excludes="startup.lua,tcchannel.lua,rcchannel.lua" casesensitive="false"/>
+						</copy>
+						<available file="../../${outputdir}/${codedir}wrapper/iphone" type="dir" property="wrapperlua.present"/>
+						<if>
+							<equals arg1="${wrapperlua.present}" arg2="true" />
+							<then>
+								<copy todir="${codedir}" overwrite="true">
+									<fileset dir="../../${outputdir}/${codedir}wrapper/iphone" excludes="startup.lua,tcchannel.lua,rcchannel.lua" casesensitive="false"/>
+								</copy>
+							</then>
+						</if>
+					</else>
+				</if>
+			</else>
+		</if>
+
+		<delete dir="iphone"/>
+		<mkdir dir="iphone"/>
+		<mkdir dir="iphone/temp"/>
+		<mkdir dir="iphone/resources"/>
+		<delete dir ="resources"/>
+		<mkdir dir="resources"/>
+		<echo message="copying resources/common images"/>
+		<copy todir="resources" overwrite="true">
+   			<fileset dir="${resfolder}/common" includes="*.*,${reslocale.str}"/>
+   			<fileset dir="${i18n.iphone.properties}" includes="**/*.prop" casesensitive="false"/>   			
+   		</copy>
+				
+		<echo message="copying mobile/common images"/>
+		<copy todir="resources" overwrite="true">
+			<fileset dir="${resfolder}/mobile/common" includes="*.*,${reslocale.str}"/>
+		</copy>
+		
+        <available file="${fonts_workspace}/iPhone" type="dir" property="iphone.workspacefonts.present" /> 
+        <if>
+            <equals arg1="${iphone.workspacefonts.present}" arg2="true" /> 
+            <then>
+                <copy todir="resources" overwrite="true">
+                    <fileset dir="${fonts_workspace}/iPhone" includes="*.ttf"/>
+                </copy>
+            </then>
+        </if>
+		
+
+		<copy todir="resources" overwrite="true">
+			<fileset dir="${resfolder}/mobile/native/iphone"/>
+		</copy>
+
+		
+        <available file="${resfolder}/fonts/iPhone" type="dir" property="iphone.fonts.present" /> 
+        <if>
+            <equals arg1="${iphone.fonts.present}" arg2="true" /> 
+            <then>
+                <copy todir="resources" overwrite="true">
+                    <fileset dir="${resfolder}/fonts/iPhone" includes="*.ttf"/>
+                </copy>
+            </then>
+        </if>
+		
+		<copy todir="iphone/resources">
+			<fileset dir="resources"/>
+		</copy>
+		
+		<if>
+			<equals arg1="${iphone.hybridmode}" arg2="mixed"/>
+			<then>
+				<condition property="luasrcHybridIphone" value="hybrid/nativeplatforms/iphone" else="iphone">
+					<equals arg1="${dev.language}" arg2="lua"/>
+				</condition>
+				<!--property name="luasrcHybridIphone" value="hybrid/nativeplatforms/iphone"/-->
+				<!--Copy native headers/footers to lua before applying m4 -->
+				<available file="../../${outputdir}/${codedir}hybrid/native" type="dir" property="hybrid.nativelua.present"/>
+				<if>
+					<equals arg1="${hybrid.nativelua.present}" arg2="true"/>
+					<then>
+						<copy todir="${codedir}" failonerror="false">
+							<fileset dir="../../${outputdir}/${codedir}hybrid/native"></fileset>
+						</copy>
+					</then>
+				</if>
+				<available file="../../${outputdir}/${codedir}hybrid/native/iphone" type="dir" property="native.iphonelua.present"/>
+				<if>
+					<equals arg1="${native.iphonelua.present}" arg2="true" />
+					<then>
+						<copy todir="${codedir}" overwrite="true">
+				     		<fileset dir="../../${outputdir}/${codedir}hybrid/native/iphone" excludes="startup.lua,tcchannel.lua,rcchannel.lua" casesensitive="false"/>
+			    		</copy>
+					</then>
+				</if>
+				<createAndCopyToLuasrc dir.name="${luasrcHybridIphone}" m4constant.name="m4iphone" output.lua.dir="${codedir}hybrid"/>
+				<if>
+					<equals arg1="${dev.language}" arg2="lua"/>
+					<then>
+						<exec executable="cmd.exe" failonerror="true" failifexecutionfails="true">
+							<env key="PATH" path="${env.PATH};${appfolder}/build/luacompiler"/>
+							<arg line='/c "luac${luaprefix} -o ${luac.file}${_debugluafile} ${project.loc}\luasrc\${luasrcHybridIphone}\startup\rcchannel.lua ${project.loc}\luasrc\${luasrcHybridIphone}\nongenerated\*.lua ${project.loc}\luasrc\${luasrcHybridIphone}\generated\*.lua ${project.loc}\luasrc\${luasrcHybridIphone}\startup\startup.lua"'/>
+						</exec>
+					</then>
+				</if>
+				
+				<!--Copy static headers/footers to lua before applying m4 -->
+				<available file="../../${outputdir}/${codedir}hybrid/static" type="dir" property="hybrid.staticlua.present"/>
+				<if>
+					<equals arg1="${hybrid.staticlua.present}" arg2="true"/>
+					<then>
+						<copy todir="${codedir}" failonerror="false">
+							<fileset dir="../../${outputdir}/${codedir}hybrid/static"></fileset>
+						</copy>
+					</then>
+				</if>
+				<available file="../../${outputdir}/${codedir}hybrid/static/iphone" type="dir" property="static.iphonelua.present"/>
+				<if>
+					<equals arg1="${static.iphonelua.present}" arg2="true" />
+					<then>
+						<copy todir="${codedir}" overwrite="true">
+				     		<fileset dir="../../${outputdir}/${codedir}hybrid/static/iphone" excludes="startup.lua,tcchannel.lua,rcchannel.lua" casesensitive="false"/>
+			    		</copy>
+					</then>
+				</if>
+				<createAndCopyToLuasrc dir.name="hybrid/spa/iphone" m4constant.name="m4spaip" output.lua.dir="${codedir}hybrid"/>
+			</then>
+			<else>
+				<if>
+					<equals arg1="${iphone.hybridmode}" arg2="wrapper"/>
+					<then>
+						<delete dir="iphonewrappertemp"/>
+						<mkdir dir="iphonewrappertemp"/>
+						<delete dir="iphonewrapper"/>
+						<mkdir dir="iphonewrapper"/>
+						<if>
+							<equals arg1="${dev.language}" arg2="lua"/>
+							<then>
+								<copy todir="iphonewrappertemp">
+									<fileset dir="../../output/luawrapper" includes="globalsinit_native.lua"/>
+								</copy>
+								<exec executable="${basedir}/m4routine.bat" failonerror="true" failifexecutionfails="true">
+									<env key="PATH" path="${env.PATH};${basedir}/m4.exe;${basedir}/regex2.dll;"/>
+									<arg value="iphonewrappertemp"/>
+									<arg value="iphonewrapper"/>
+									<arg value="m4iphone"/>
+								</exec>
+								<delete dir="iphonewrappertemp"/>
+								<copy todir="iphonewrapper">
+									<fileset dir="${project.loc}\luasrc\wrapper\iphone\generated" excludes="globalsinit.lua"/>
+								</copy>
+								<exec executable="cmd.exe" failonerror="true" failifexecutionfails="true">
+									<env key="PATH" path="${env.PATH};${appfolder}/build/luacompiler"/>
+									<arg line='/c "luac${luaprefix} -o ${luac.file}${_debugluafile} ${project.loc}\luasrc\wrapper\iphone\startup\rcchannel.lua ${project.loc}\luasrc\wrapper\iphone\nongenerated\*.lua iphonewrapper\*.lua ${project.loc}\luasrc\wrapper\iphone\startup\startup.lua"'/>
+								</exec>
+							</then>
+							<else>
+								<copy todir="iphonewrappertemp">
+									<fileset dir="../../${outputdir}/jswrapper" includes="startup_native.js"/>
+								</copy>
+								<exec-script executable="${node.file}" >
+									<arg value="${js.file}"/>
+									<arg value="${basedir}/iphonewrappertemp"/>
+									<arg value="${basedir}/iphonewrapper"/>
+									<arg value="iphone"/>
+									<arg value="${plugin.loc}/preview/node_mac"/>
+								</exec-script>
+								<delete dir="iphonewrappertemp"/>
+								<delete dir="${project.loc}\jssrc\iphone"/>
+								<mkdir dir="${project.loc}\jssrc\iphone"/>
+								<copy todir="${project.loc}\jssrc\iphone">
+									<fileset dir="${project.loc}\jssrc\wrapper\iphone"/>
+								</copy>
+								<delete file="${project.loc}\jssrc\iphone\startup\startup_native.js"/>
+								<delete file="${project.loc}\jssrc\iphone\generated\startup_native.js"/>
+								<copy file="iphonewrapper\startup_native.js" tofile="${project.loc}\jssrc\iphone\startup\startup.js" overwrite="true"/>
+							</else>
+						</if>
+					</then>
+					<else>
+						<createAndCopyToLuasrc dir.name="iphone" m4constant.name="m4iphone"/>
+						<if>
+							<equals arg1="${dev.language}" arg2="lua"/>
+							<then>
+								<exec executable="cmd.exe" failonerror="true" failifexecutionfails="true">
+									<env key="PATH" path="${env.PATH};${appfolder}/build/luacompiler"/>
+									<arg line='/c "luac${luaprefix} -o ${luac.file}${_debugluafile} ${project.loc}\luasrc\iphone\startup\rcchannel.lua ${project.loc}\luasrc\iphone\nongenerated\*.lua ${project.loc}\luasrc\iphone\generated\*.lua ${iphonestartupfile}"'/>
+								</exec>
+							</then>
+						</if>
+					</else>
+				</if>
+			</else>
+		</if>
+		
+		<delete dir="iphonekbf"/>
+		<mkdir dir="iphonekbf"/>
+		<mkdir dir="iphonekbf/resources"/>
+	
+		<!-- platform version starting with 2.6.0 indicates that KBF format changed(image name length restriction removed) -->
+		<concat fixlastline="yes" destfile="resources.properties">
+		platform.version=${platform.version}
+		app.name=${appname}
+		app.version=${appversion}
+		vendor.name=${vendorname}
+		entrypoint=konyapp.o
+		appid=${appid}
+		logo.id=${logo}
+		splash.image=${splash.image}
+		splash.video=${splash.video}
+		splash.video.interruptable=${splash.video.interruptable}
+		splash.animation.duration=${splash.animation.duration}
+		splash.animation.images=${splash.animation.images}
+		splash.loading.indicator=${splash.iphone.li}
+		bundle.identifier=${bundle.identifier}
+		bundle.version=${bundle.version}
+		app.icon.glossyeffect=${app.icon.glossyeffect}
+		konyapp.o.id=konyapp.o
+		konyapp.o.type=1
+		resfolder=${basedir}/resources
+		platform.lib.charts=${enableCharts2D3DiPhoneiPad}
+		locales=${iphonelocales}</concat>
+
+		<replaceregexp file="resources.properties" match="\\" replace="/" flags="g" />
+		<copy file="resources.properties" tofile="iphonekbf/application.properties" overwrite="true" />
+		
+		<copy todir="iphonekbf/themes" overwrite="true">
+			<fileset dir="../../${outputdir}/${codedir}/themes/iphone" includes="*.theme"/>
+		</copy>
+		
+		<if>
+			<available file="../../${outputdir}/functionalmodules" type="dir" />
+			<then>
+				<copy todir="iphonekbf/functionalmodules" overwrite="true">
+					<fileset dir="../../${outputdir}/functionalmodules" includes="*.xml"/>
+				</copy>
+			</then>
+		</if>
+	
+		<if>
+			<equals arg1="${dev.language}" arg2="lua"/>
+			<then>
+				<echo message="Generating kbf for iphone..."/>		
+				<exec executable="${basedir}/kappgen.bat" failonerror="true" failifexecutionfails="true">
+				     <arg value="${kpgenpath}" /> 
+				     <arg value="${log4jpath}" /> 
+				     <arg value="${basedir}/" /> 
+				     <arg value="resources" /> 	
+				</exec>
+				<copy file="${luac.file}" todir="iphonekbf" overwrite="true" />
+				<delete file ="${luac.file}"/>
+				<copy file="konyapp.kbf" tofile="iphonekbf/konyappiphone.kbf" overwrite="true" />
+			</then>
+			<else>
+				<echo message="Copying javascript files and theme files."/>
+				<copy todir="iphonekbf/javascript" overwrite="true">
+					<fileset dir="${project.loc}/jssrc/iphone/generated" includes="*.js"/>
+					<fileset dir="${project.loc}/jssrc/iphone/nongenerated" includes="*.js"/>
+					<fileset dir="${project.loc}/jssrc/iphone/startup" includes="*.js"/>
+				</copy>
+				<if>
+					<available file="${project.loc}/jssrc/iphone/nongenerated/workerthreads" type="dir" />
+					<then>
+						<copy todir="iphonekbf/workerthreads" overwrite="true">
+							<fileset dir="${project.loc}/jssrc/iphone/nongenerated/workerthreads" includes="*.js"/>
+						</copy>
+					</then>
+				</if>
+			</else>
+		</if>
+		
+		<copy todir="iphonekbf/resources">
+			<fileset dir="resources" excludes="*.o"/>
+		</copy>
+		
+		<echo message="Locales: ${locales}"/>
+		<for list="${locales}" param="locale.name">
+		  <sequential>
+		    <move todir="iphonekbf/resources/@{locale.name}.lproj">
+				<fileset dir="iphonekbf/resources/@{locale.name}"/>
+			</move>
+			<delete dir="iphonekbf/resources/@{locale.name}"/>
+
+		  	<move file="iphonekbf/resources/@{locale.name}.prop" tofile="iphonekbf/resources/@{locale.name}.lproj/Localizable.strings"/>
+			<delete file="iphonekbf/resources/@{locale.name}.prop"/>
+		  </sequential>
+		</for>
+		
+		<echo message="ignoreStringLocales: ${ignoreStringLocales}"/>
+			
+			<for list="${ignoreStringLocales}" param="locale.name">
+			  <sequential>
+			    <echo message="deleting string for  @{locale.name}"/>
+			  	<delete file="iphonekbf/resources/@{locale.name}.lproj/Localizable.strings"/>
+			  </sequential>
+			</for>
+
+		<!-- start js custom widgets for iphone-->
+		<echo message=" custom widgets for iphone" />
+		<if>
+			<equals arg1="${dev.language}" arg2="js"/>
+			<then>
+				<available file="${customwidgets.dir}/iphone" type="dir" property="iphone.js.libs.available" />
+				<if>
+					<equals arg1="${iphone.js.libs.available}" arg2="true"/>
+					<then>
+						<copy todir="iphonekbf/customwidgets">
+							<fileset dir="${customwidgets.dir}/iphone" includes="*.*"/>
+						</copy>				
+					</then>
+				</if>
+				<available file="${ios.customwidgets.xml.dir}" type="dir" property="iphone.js.xml.available" />
+				<echo message=" js custom widget xml file available is  ${iphone.js.xml.available}" />
+				<if>
+					<equals arg1="${iphone.js.xml.available}" arg2="true"/>
+					<then>
+						<copy todir="iphonekbf/customwidgets">
+							<fileset dir="${ios.customwidgets.xml.dir}" includes="*.xml"/>
+							<globmapper from="*" to="cwi_*"/>
+						</copy>				
+					</then>
+				</if>				
+			</then>
+		</if>
+		
+		
+		<!-- Start : ffi for iphone-->
+		<available file="${iphone.libs.folder}" type="dir" property="iphone.libs.available" />
+		<if>
+			<equals arg1="${iphone.libs.available}" arg2="true"/>
+			<then>
+				<copy todir="iphonekbf">
+					<fileset dir="${iphone.libs.folder}" includes="*.*"/>
+				</copy>
+			</then>
+		</if>
+		<!--available file="${iphone.templates.folder}" type="dir" property="iphone.templates.available" />
+		<if>
+			<equals arg1="${iphone.templates.available}" arg2="true"/>
+			<then>
+				<copy todir="iphonekbf">
+					<fileset dir="${iphone.templates.folder}" includes="*.*"/>
+				</copy>
+			</then>
+		</if>
+		<available file="${iphone.templates.folder}" type="dir" property="iphone.templates.available" />
+		<if>
+			<equals arg1="${iphone.templates.available}" arg2="true"/>
+			<then>
+				<copy todir="iphonekbf">
+					<fileset dir="${iphone.templates.folder}" includes="*.*"/>
+				</copy>
+			</then>
+		</if-->
+		<available file="${ffi.xml.dir}" type="dir" property="ffi.xml.available" />
+		<if>
+			<equals arg1="${ffi.xml.available}" arg2="true"/>
+			<then>
+				<copy todir="iphonekbf">
+					<fileset dir="${ffi.xml.dir}" includes="*.*"/>
+					<globmapper from="*" to="lua_*"/>
+				</copy>
+			</then>
+		</if>
+		<unset name="ffi.xml.available"/>
+		<available file="${js.ffi.xml.dir}" type="dir" property="ffi.xml.available" />
+		<if>
+			<equals arg1="${ffi.xml.available}" arg2="true"/>
+			<then>
+				<copy todir="iphonekbf" >
+					<fileset dir="${js.ffi.xml.dir}" includes="*.*"/>
+					<globmapper from="*" to="js_*"/>
+				</copy>
+			</then>
+		</if>
+		<unset name="ffi.xml.available"/>
+		<!-- End : ffi for iphone-->
+		
+		<if>
+			<equals arg1="${iphone.secure.build}" arg2="true"/>
+			<then>
+				<available file="${iospolicyinjection.loc}\libKonyMAMPolicy.zip" property="ios.available"/>
+				<if>
+					<equals arg1="${ios.available}" arg2="true"/>
+					<then>
+						<copy todir="iphonekbf">
+							<fileset dir="${iospolicyinjection.loc}" includes="libKonyMAMPolicy.zip"/>
+						</copy>
+					</then>
+				</if>
+			</then>
+		</if>
+		
+		
+		<!-- Copy settings.properties  for iphone-->
+		<available file="../../${outputdir}/Settings.properties.xml" type="file" property="setting.properties.xml.available" />
+		<echo message="setting value  ${setting.properties.xml.available}" />
+		<if>
+			<equals arg1="${setting.properties.xml.available}" arg2="true"/>
+			<then>
+				<copy todir="iphonekbf">
+					<fileset dir="../../${outputdir}" includes="Settings.properties.xml"/>
+				</copy>
+			</then>
+		</if>
+	</target>
+	
+	<target name="buildKAR">
+
+		<echo message="Creating iphone kbf KAR file" />
+		<if>
+			<equals arg1="${hybridmode}" arg2="native"/>
+			<then>
+			</then>
+			<else>
+				<mkdir dir="iphonekbf/kwebmodules"/>
+				<mkdir dir="iphonekbf/tpartywebmodules"/>
+				<available file="${appfolder}/${outputdir}/spaiphone${hybridmode}" type="dir" property="hybriddir.present"/>
+				<if>
+					<equals arg1="${hybriddir.present}" arg2="true"/>
+					<then>
+						<copy todir="iphonekbf/kwebmodules">
+							<fileset dir="${appfolder}/${outputdir}/spaiphone${hybridmode}"/>
+						</copy>
+						<if>
+							<not>
+							<equals arg1="${locales}" arg2=""/>
+							</not>
+							<then>
+								<copy todir="iphonekbf/kwebmodules/resources/strings">
+									<fileset dir="${resfolder}/i18n/iphone_properties" includes="*.prop"/>
+									<mapper type="glob" from="*.prop" to="*.js"/>
+								</copy>
+                                
+                                <replaceregexp match="(.*)" replace="var i18nObject = {\1}" flags="s" byline="false">
+                                	<fileset dir="iphonekbf/kwebmodules/resources/strings" includes="*.js"/>
+                                </replaceregexp>
+                                
+                                <replace dir="iphonekbf/kwebmodules/resources/strings">
+                                	<include name="*.js"/>
+                                    <replacefilter token="&quot;=&quot;" value="&quot;:&quot;" />
+                                    <replacefilter token="&quot;;" value="&quot;,"/>                              
+                                </replace>
+							</then>
+						</if>
+					</then>
+				</if>
+				<copy file="../nativeplatform.js" todir="iphonekbf/kwebmodules/appjs"/>
+				<copy todir="iphonekbf/tpartywebmodules">
+					<fileset dir="${webmodule.loc}"/>
+				</copy>
+				<!-- If not native, then copy spa images also into images folder -->
+				<if>
+					<not>
+					<equals arg1="iphone.hybridmode" arg2="native"/>
+					</not>
+					<then>
+						<mkdir dir="iphonekbf/kwebmodules/images"/>
+						<copy todir="iphonekbf/kwebmodules/images">
+							<fileset dir="iphonekbf/resources"/>
+						</copy>
+						
+						<copy todir="iphonekbf/kwebmodules/images" overwrite="true">
+							<fileset dir="${resfolder}/mobile/web/spaiphone"/>
+						</copy>
+						
+								<echo message="---webcommons.plugin.loc---- ${webcommons.plugin.loc}"/>
+								<echo message="---assets.dir---- ${assets.dir}/web/images/${spaimgdir.assets}"/>
+								<available file="${webcommons.plugin.loc}/common/wap/inputdata/webfiles/iphone" type="dir" property="tc.images.present"/>
+								<if>
+								<equals arg1="${tc.images.present}" arg2="true"/>
+								<then>
+									<echo message = "Came inside the tc common images"/>
+									<copy todir="iphonekbf/kwebmodules/images" overwrite="true" preservelastmodified="true">
+										<fileset dir="${webcommons.plugin.loc}/common/wap/inputdata/webfiles/iphone" includes="*.*"/>
+									</copy>
+								</then>
+								</if>
+						
+						<mkdir dir="iphonekbf/kwebmodules/images/retina"/>
+						<copy todir="iphonekbf/kwebmodules/images/retina" overwrite="true">
+							<fileset dir="iphonekbf/kwebmodules/images"/>
+						</copy>
+					</then>
+				</if>
+			</else>
+		</if>
+		<zip destfile="${basedir}/iphonekbf/konyappiphone.KAR" update="false" basedir="${basedir}/iphonekbf"/>
+		<available file="${basedir}/iphonekbf" type="dir" property="iphoneKAR.present"/>
+   		<if>
+		<equals arg1="${iphoneKAR.present}"  arg2="true"/>
+   			<then>
+   				<copy todir="${jetty.web}r/kbf" overwrite="true">
+					<fileset dir="${basedir}/iphonekbf" includes="*.KAR,*.kbf"/>
+				</copy>
+   			</then>
+   		</if>
+	</target>
+	
+	<target name="nativeiphone">
+
+		<echo message="Creating iphone KAR file for native code.." />
+		<delete dir="kbf"/>
+		<mkdir dir="kbf"/>
+		<mkdir dir="kbf/codegen"/>
+		<mkdir dir="kbf/resources"/>
+		
+		<unset name="logo"/>
+		<var name="logo" value="${logo_iphone}"/>
+		<unset name="splash.image"/>
+		<var name="splash.image" value="${splash.image_iphone}"/>
+		<unset name="splash.video"/>
+		<var name="splash.video" value="${splash.video_iphone}"/>
+		
+		<copy todir="kbf/resources">
+			<fileset dir="iphone/resources"/>
+		</copy>
+		
+		<for list="${locales}" param="locale.name">
+		  <sequential>
+		    <move todir="kbf/resources/@{locale.name}.lproj">
+				<fileset dir="kbf/resources/@{locale.name}"/>
+			</move>
+			<delete dir="kbf/resources/@{locale.name}"/>
+
+		  	<move file="kbf/resources/@{locale.name}.prop" tofile="kbf/resources/@{locale.name}.lproj/Localizable.strings"/>
+			<delete file="kbf/resources/@{locale.name}.prop"/>
+		  </sequential>
+		</for>
+		
+		<echo message="ignoreStringLocales: ${ignoreStringLocales}"/>
+		<for list="${ignoreStringLocales}" param="locale.name">
+		 <sequential>
+		   <echo message="deleting string for  @{locale.name}"/>
+		  	<delete file="kbf/resources/@{locale.name}.lproj/Localizable.strings"/>
+		  </sequential>
+		</for>
+		
+		<concat fixlastline="yes" destfile="kbf/application.properties">
+		platform.version=3.2.0.${build}
+		app.name=${appname}
+		app.version=${appversion}
+		vendor.name=${vendorname}
+		entrypoint=konyapp.o
+		appid=${appid}
+		logo.id=${logo}
+		splash.image=${splash.image}
+		splash.video=${splash.video}
+		splash.video.interruptable=${splash.video.interruptable}
+		splash.animation.duration=${splash.animation.duration}
+		splash.animation.images=${splash.animation.images}
+		splash.loading.indicator=${splash.iphone.li}
+		bundle.identifier=${bundle.identifier}
+		bundle.version=${bundle.version}
+		app.icon.glossyeffect=${app.icon.glossyeffect}
+		konyapp.o.id=konyapp.o
+		konyapp.o.type=1
+		resfolder=${basedir}/resources
+		locales=${iphonelocales}</concat>
+
+		<replaceregexp file="kbf/application.properties" match="\\" replace="/" flags="g" />
+		
+		<copy todir="kbf/codegen" overwrite="true">
+			<fileset dir="iphonenative" includes="*.*"/>
+		</copy>
+   		
+		<available file="${iphone.libs.folder}" type="dir" property="iphone.libs.available" />
+		<if>
+			<equals arg1="${iphone.libs.available}" arg2="true"/>
+			<then>
+				<copy todir="kbf">
+					<fileset dir="${iphone.libs.folder}" includes="*.*"/>
+				</copy>
+			</then>
+		</if>
+		<available file="${iphone.templates.folder}" type="dir" property="iphone.templates.available" />
+		<if>
+			<equals arg1="${iphone.templates.available}" arg2="true"/>
+			<then>
+				<copy todir="kbf">
+					<fileset dir="${iphone.templates.folder}" includes="*.*"/>
+				</copy>
+			</then>
+		</if>	
+		<zip destfile="${basedir}/kbf/konyappiphone.KAR" update="false" basedir="${basedir}/kbf"></zip>
+		
+   		<available file="${basedir}/kbf" type="dir" property="kbf.present"/>
+   		<if>
+		<equals arg1="${kbf.present}"  arg2="true"/>
+   			<then>
+   				<copy todir="${jetty.web}r/kbf" overwrite="true">
+					<fileset dir="${basedir}/kbf" includes="konyappiphone.KAR"/>
+				</copy>
+   			</then>
+   		</if>		
+	</target>
+
+</project>

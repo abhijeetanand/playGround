@@ -1,0 +1,24 @@
+<properties>
+    <attributes name="project.type" value="js"/>
+    <attributes name="appversionkey" value="1.0.0"/>
+    <attributes name="mwportkey" value="80"/>
+    <attributes name="winmangotiletitlekey" value="testRequire"/>
+    <attributes name="andtargetsdkkey" value="None"/>
+    <attributes name="mwaddrkey" value="192.168.1.3"/>
+    <attributes name="isNewAppWithRespectToAndroidPackageName" value="true"/>
+    <attributes name="iphonebundleidentifierkey" value="com.kony.testRequire"/>
+    <attributes name="createdgaversion" value="5.6.0"/>
+    <attributes name="build" value="debug"/>
+    <attributes name="currentgaversion" value="5.6.2.GA_v201408132003"/>
+    <attributes name="appidkey" value="testRequire"/>
+    <attributes name="ioscheckboxcorrection" value="true"/>
+    <attributes name="mwhttpsportkey" value="443"/>
+    <attributes name="apppackagekey" value="com.orgname.testRequire"/>
+    <attributes name="iosrespectimagesizecorrection" value="true"/>
+    <attributes name="iostextboxpaddingcorrection" value="true"/>
+    <attributes name="vendornamekey" value="KonyLabs"/>
+    <attributes name="marginsincludedinwidgetcontainerweight" value="true"/>
+    <attributes name="iospopuptransitioncorrection" value="true"/>
+    <attributes name="appnamekey" value="testRequire"/>
+    <attributes name="win6xj2meonlysupported" value="false"/>
+</properties>

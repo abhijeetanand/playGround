@@ -1,0 +1,2 @@
+//importScript() 
+var a = "passed";

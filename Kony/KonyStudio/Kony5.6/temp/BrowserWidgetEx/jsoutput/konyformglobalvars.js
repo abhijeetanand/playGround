@@ -1,0 +1,2 @@
+        var frmBrowser;
+        var frmHome;

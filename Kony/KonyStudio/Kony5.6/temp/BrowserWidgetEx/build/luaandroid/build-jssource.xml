@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-jssource" basedir="."  default="copy-appsrc">
+	<taskdef name="escapejssource" classname="com.konylabs.android.anttask.EscapeJavaScriptSourceTask">
+		<classpath>
+			<pathelement location="extres/EscapeJavaScriptSourceTask.jar"/>
+			<pathelement location="extres/commons-lang-2.6.jar"/>
+		</classpath>
+	</taskdef>
+	
+	<taskdef name="encodescript" classname="com.konylabs.android.anttask.EncodeScriptTask">
+		<classpath>
+			<pathelement location="extres/EncodeScriptTask.jar"/>
+			<pathelement location="extres/commons-lang-2.6.jar"/>
+		</classpath>
+	</taskdef>
+	
+	<var name="caseIndex" value="-1"/>
+	<target name="copy-appsrc">
+		<if>
+			<equals arg1="${secureappsource}" arg2="true"/>
+			<then>
+				<!--antcall target="copy-appsrc-to-dex"/-->
+				<antcall target="copy-appsrc-to-assets-zip"/>
+				<encodescript appSource="${assets.dir}/js/startup.js" />
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$APP_SOURCE_LOC" value="2" />
+				<move file="${assets.dir}/js/startup_encrypt.js" tofile="${assets.dir}/js/startup.js" overwrite="true"/>	
+			</then>
+			<else>
+				<antcall target="copy-appsrc-to-assets-zip"/>
+				<replace file="${app.dir}/src/${packagepath}/${appid}.java" token="$APP_SOURCE_LOC" value="1" />
+			</else>
+		</if>
+		
+		<condition property="isBiggerCode">
+			<length file="${assets.dir}/js/startup.js" when="gt" length="1036288" />
+		</condition>
+		<if>
+			<equals arg1="${isBiggerCode}" arg2="true" />
+			<then>
+				<move file="${assets.dir}/js/startup.js" tofile="${assets.dir}/js/startup.js.mp3" overwrite="true"/>
+			</then>
+		</if>
+		<!-- Create secure source for PAAS license file -->
+		<antcall target="copy-PaaS-resources"/>
+	</target>
+	
+	<target name="copy-PaaS-resources">
+		<available file="extres/paas/license.js" type="file" property="extres.paas.license"/>
+		<if>
+    		<equals arg1="${extres.paas.license}" arg2="true"/>
+    		<then>
+				<loadfile property="appsrc" srcFile="extres/paas/license.js"/>
+				<!-- Check if file is empty -->
+				<if>
+					<equals arg1="${appsrc}" arg2="$${appsrc}"/>
+					<then>
+						<property name="escjssrc" value=""/>
+					</then>
+					<else>
+						<escapejssource property="escjssrc" appSource="${appsrc}" />
+					</else>
+				</if>
+				<mkdir dir="${app.dir}/src/com/konylabs/js/appsrc" />
+				<copy file="extres/JSSourceFileTemplate.java" tofile="${app.dir}/src/com/konylabs/js/appsrc/PaaSLicenseSource.java" overwrite="true" />
+				<replace file="${app.dir}/src/com/konylabs/js/appsrc/PaaSLicenseSource.java" token="$SourceFileName" value="PaaSLicenseSource"/>
+				<replace file="${app.dir}/src/com/konylabs/js/appsrc/PaaSLicenseSource.java" token="$JSSource" value="${escjssrc}"/>
+			</then>
+		</if>
+	</target>
+	
+	<target name="copy-appsrc-to-assets-zip">
+		<delete dir="${app.dir}/src/com/konylabs/js/appsrc" quiet="true"/>
+		<delete dir="${assets.dir}/js" quiet="true"/>
+		<mkdir dir="${assets.dir}/js"/>
+		<available file="${jssrc.dir}" type="dir" property="jssrc.present"/>
+		<if>
+			<equals arg1="${jssrc.present}" arg2="true"/>
+			<then>
+				<zip destfile="${assets.dir}/js/startup.js">
+					<zipfileset dir="${jssrc.dir}/nongenerated" includes="license.js"></zipfileset>
+					<zipfileset dir="${jssrc.dir}/generated"></zipfileset>
+					<zipfileset dir="${jssrc.dir}/nongenerated" excludes="license.js"></zipfileset>
+					<zipfileset dir="${jssrc.dir}/startup"></zipfileset>
+				</zip>
+			</then>
+		</if>
+	</target>
+	
+	
+	<target name="copy-appsrc-to-assets">
+		<delete dir="${app.dir}/src/com/konylabs/js/appsrc" quiet="true"/>
+		<mkdir dir="${assets.dir}/js"/>
+		<available file="${jssrc.dir}" type="dir" property="jssrc.present"/>
+		<if>
+			<equals arg1="${jssrc.present}" arg2="true"/>
+			<then>
+				<copy todir="${assets.dir}/js" overwrite="true">
+					<fileset dir="${jssrc.dir}/generated" includes="*.js"/>
+				</copy>
+				<copy todir="${assets.dir}/js" overwrite="true">
+					<fileset dir="${jssrc.dir}/nongenerated" includes="*.js"/>
+				</copy>
+				<copy todir="${assets.dir}/js" overwrite="true">
+					<fileset dir="${jssrc.dir}/startup" includes="*.js"/>
+				</copy>
+			</then>
+		</if>
+	</target>
+	
+	<target name="copy-appsrc-to-dex" depends="init,readjsfiles-generated,readjsfiles-nongenerated,readjsfiles-startup">
+		<replace file="${app.dir}/src/com/konylabs/js/appsrc/AppJavaScriptSource.java" token="$CASE" value=""/>
+		<delete dir="${assets.dir}/js" quiet="true"/>
+	</target>
+	
+	<target name="init" >
+		<mkdir dir="${app.dir}/src/com/konylabs/js/appsrc" />
+		<copy file="extres/AppJavaScriptSource.java" tofile="${app.dir}/src/com/konylabs/js/appsrc/AppJavaScriptSource.java" overwrite="true"/>
+	</target>
+	
+	<target name="readjsfiles-generated" >
+		<resourcecount property="count.generated">
+			<fileset dir="${jssrc.dir}/generated" includes="*.*"/>
+		</resourcecount>
+		<replace file="${app.dir}/src/com/konylabs/js/appsrc/AppJavaScriptSource.java" token="$GENERATED" value="${count.generated}"/>
+		<for param="jsfile">
+			<path>
+				<fileset dir="${jssrc.dir}/generated">
+					<include name="*.js"/>
+				</fileset>
+			</path>
+			<sequential>
+				<math result="result" operand1="${caseIndex}" operation="+" operand2="1" datatype="int"/>
+				<var name="caseIndex" value="${result}"/>
+				<antcall target="build_js_file">
+					<param name="jsfile" value="@{jsfile}" />
+					<param name="caseIndex" value="${result}" /> 
+				</antcall>
+			</sequential>
+		</for>
+	</target>
+	
+	<target name="readjsfiles-nongenerated" >
+		<resourcecount property="count.nongenerated">
+			<fileset dir="${jssrc.dir}/nongenerated" includes="*.*"/>
+		</resourcecount>
+		<replace file="${app.dir}/src/com/konylabs/js/appsrc/AppJavaScriptSource.java" token="$NONGENERATED" value="${count.nongenerated}"/>
+		<for param="jsfile">
+			<path>
+		    <fileset dir="${jssrc.dir}/nongenerated">
+				<include name="*.js"/>
+			</fileset>
+		</path>
+		<sequential>
+			<math result="result" operand1="${caseIndex}" operation="+" operand2="1" datatype="int"/>
+			<var name="caseIndex" value="${result}"/>
+			<antcall target="build_js_file">
+				<param name="jsfile" value="@{jsfile}" />
+				<param name="caseIndex" value="${result}" /> 
+			</antcall>
+		</sequential>
+	</for>
+	</target>
+	
+	<target name="readjsfiles-startup" >
+		<resourcecount property="count.startup">
+			<fileset dir="${jssrc.dir}/startup" includes="*.*"/>
+		</resourcecount>
+		<replace file="${app.dir}/src/com/konylabs/js/appsrc/AppJavaScriptSource.java" token="$STARTUP" value="${count.startup}"/>
+		<for param="jsfile">
+			<path>
+				<fileset dir="${jssrc.dir}/startup">
+					<include name="*.js"/>
+				</fileset>
+			</path>
+			<sequential>
+				<math result="result" operand1="${caseIndex}" operation="+" operand2="1" datatype="int"/>
+				<var name="caseIndex" value="${result}"/>
+				<antcall target="build_js_file">
+					<param name="jsfile" value="@{jsfile}" />
+					<param name="caseIndex" value="${result}" /> 
+				</antcall>
+			</sequential>
+		</for>
+	</target>
+	
+	<target name="build_js_file">
+		<var name="caseIndex" value="${result}" />
+		<echo message="caseIndex=${caseIndex}" />
+		<loadfile property="appsrc" srcFile="${jsfile}"/>
+		<!-- Check if file is empty -->
+		<if>
+			<equals arg1="${appsrc}" arg2="$${appsrc}"/>
+			<then>
+				<property name="escjssrc" value=""/>
+			</then>
+			<else>
+				<escapejssource property="escjssrc" appSource="${appsrc}" />
+			</else>
+		</if>
+		<basename property="jsfilename" file="${jsfile}"/>
+		<propertyregex property="jsfilenameprimary"
+               input="${jsfilename}"
+               regexp="(.*)[.]js"
+               replace="\1"
+               global="true" />
+			   
+		<copy file="extres/JSSourceFileTemplate.java" tofile="${app.dir}/src/com/konylabs/js/appsrc/${jsfilenameprimary}.java" overwrite="true" />
+		<replace file="${app.dir}/src/com/konylabs/js/appsrc/${jsfilenameprimary}.java" token="$SourceFileName" value="${jsfilenameprimary}"/>
+		<replace file="${app.dir}/src/com/konylabs/js/appsrc/${jsfilenameprimary}.java" token="$JSSource" value="${escjssrc}"/>
+		
+		<replace file="${app.dir}/src/com/konylabs/js/appsrc/AppJavaScriptSource.java" token="$SourceFileName" value="${jsfilenameprimary}"/>
+		<replace file="${app.dir}/src/com/konylabs/js/appsrc/AppJavaScriptSource.java" token="$CASE" value="case $CASEID : return new ${jsfilenameprimary}();${line.separator}$CASE"/>
+		<replace file="${app.dir}/src/com/konylabs/js/appsrc/AppJavaScriptSource.java" token="$CASEID" value="${caseIndex}"/>
+	</target>
+	
+</project>

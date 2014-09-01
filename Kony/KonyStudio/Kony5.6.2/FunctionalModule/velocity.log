@@ -1,0 +1,38 @@
+2014-07-04 14:50:19,021 - Null reference [template 'tpspaindexhtml.vm', line 432, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,021 - Null reference [template 'tpspaindexhtml.vm', line 433, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,021 - Null reference [template 'tpspaindexhtml.vm', line 451, column 46] : $KG cannot be resolved.
+2014-07-04 14:50:19,021 - Null reference [template 'tpspaindexhtml.vm', line 451, column 81] : $KG cannot be resolved.
+2014-07-04 14:50:19,021 - Null reference [template 'tpspaindexhtml.vm', line 453, column 40] : $KG cannot be resolved.
+2014-07-04 14:50:19,021 - Null reference [template 'tpspaindexhtml.vm', line 453, column 82] : $KG cannot be resolved.
+2014-07-04 14:50:19,058 - ResourceManager : found tpdesktopindexhtml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2014-07-04 14:50:19,060 - ResourceManager : found tpxhtmljspxfsbuster.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2014-07-04 14:50:19,061 - Left side ($hascal) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. tpdesktopindexhtml.vm [line 93, column 27]
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 258, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 270, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 271, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 272, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 273, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 274, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 291, column 46] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 291, column 81] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 293, column 40] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 293, column 82] : $KG cannot be resolved.
+2014-07-04 14:50:19,061 - Null reference [template 'tpdesktopindexhtml.vm', line 329, column 29] : $KG cannot be resolved.
+2014-07-04 14:50:19,062 - Null reference [template 'tpdesktopindexhtml.vm', line 330, column 29] : $KG cannot be resolved.
+2014-07-04 14:50:19,062 - Null reference [template 'tpdesktopindexhtml.vm', line 331, column 29] : $KG cannot be resolved.
+2014-07-04 14:50:19,062 - Left side ($hascal) of '==' operation has null value. If a reference, it may not be in the context. Operation not possible. tpdesktopindexhtml.vm [line 93, column 27]
+2014-07-04 14:50:19,062 - Null reference [template 'tpdesktopindexhtml.vm', line 258, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,062 - Null reference [template 'tpdesktopindexhtml.vm', line 270, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,062 - Null reference [template 'tpdesktopindexhtml.vm', line 271, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,062 - Null reference [template 'tpdesktopindexhtml.vm', line 272, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,062 - Null reference [template 'tpdesktopindexhtml.vm', line 273, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,063 - Null reference [template 'tpdesktopindexhtml.vm', line 274, column 25] : $KG cannot be resolved.
+2014-07-04 14:50:19,063 - Null reference [template 'tpdesktopindexhtml.vm', line 291, column 46] : $KG cannot be resolved.
+2014-07-04 14:50:19,063 - Null reference [template 'tpdesktopindexhtml.vm', line 291, column 81] : $KG cannot be resolved.
+2014-07-04 14:50:19,063 - Null reference [template 'tpdesktopindexhtml.vm', line 293, column 40] : $KG cannot be resolved.
+2014-07-04 14:50:19,063 - Null reference [template 'tpdesktopindexhtml.vm', line 293, column 82] : $KG cannot be resolved.
+2014-07-04 14:50:19,063 - Null reference [template 'tpdesktopindexhtml.vm', line 329, column 29] : $KG cannot be resolved.
+2014-07-04 14:50:19,063 - Null reference [template 'tpdesktopindexhtml.vm', line 330, column 29] : $KG cannot be resolved.
+2014-07-04 14:50:19,063 - Null reference [template 'tpdesktopindexhtml.vm', line 331, column 29] : $KG cannot be resolved.
+2014-07-04 14:50:19,225 - ResourceManager : found tpspaappmenujsonbegin.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2014-07-04 14:50:19,226 - ResourceManager : found tpspabasetemplateforjs.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader

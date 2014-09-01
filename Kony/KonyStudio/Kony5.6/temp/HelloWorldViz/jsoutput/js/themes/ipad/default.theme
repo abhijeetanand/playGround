@@ -1,0 +1,101 @@
+{   "slForm":
+    {
+                                            "wtype" : "Form",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "7e7e7e00",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slButtonGlossRed":
+    {
+                                            "wtype" : "Button",
+                                                          "bg_type" : "ms_gradient",
+                                                          "background_style" : "linear",
+                                                          "font_size" : 148,
+                                                          "font_style" : "normal",
+                                                          "font_color" : "ffffff00",
+                                                          "border_color" : "ffffff00",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "background_color" : {"gt":"linear","angle":0,"colors":["d62c3a00","bd142100","dd878d00"],"cs":[0,50,100]},
+                                                          "shadow" : {"x":0,"y":2,"br":2,"color":"00000000","inner":false},
+                                                          "text_shadow" : {"x":0,"y":-1,"br":0,"color":"00000000"}
+                              }
+	 ,   "slTitleBarTablet":
+    {
+                                            "wtype" : "TitleBar",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "ffffff00",
+                                                          "font_style" : "",
+                                                          "font_color" : "33333300",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slHbox":
+    {
+                                            "wtype" : "HBox",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "00000064",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slImage":
+    {
+                                            "wtype" : "Image2",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "00000064",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slButtonGlossBlue":
+    {
+                                            "wtype" : "Button",
+                                                          "bg_type" : "ms_gradient",
+                                                          "background_style" : "linear",
+                                                          "font_size" : 148,
+                                                          "font_style" : "normal",
+                                                          "font_color" : "ffffff00",
+                                                          "border_color" : "ffffff00",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "background_color" : {"gt":"linear","angle":0,"colors":["56a9dd00","3a83a700","4aa8d100"],"cs":[0,50,100]},
+                                                          "shadow" : {"x":0,"y":2,"br":2,"color":"00000000","inner":false},
+                                                          "text_shadow" : {"x":0,"y":-1,"br":0,"color":"00000000"}
+                              }
+	 ,   "slPopup":
+    {
+                                            "wtype" : "Popup",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "7e7e7e00",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 ,   "slTitleBar":
+    {
+                                            "wtype" : "TitleBar",
+                                                          "bg_type" : "one",
+                                                          "background_color" : "ffffff00",
+                                                          "font_style" : "",
+                                                          "font_color" : "33333300",
+                                                          "customcss" : false,
+                                                          "border_color" : "00000000",
+                                                          "border_width" : 0,
+                                                          "border_style" : "plain",
+                                                          "border_radius" : 0
+                              }
+	 }

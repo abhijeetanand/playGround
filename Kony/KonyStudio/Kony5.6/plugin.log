@@ -1,0 +1,79 @@
+18:48:28,352  INFO CGE:143 - Application Context given by IDE, already created and still alive
+18:48:29,129  INFO CGE:143 - Application Context given by IDE, already created and still alive
+18:48:29,446  INFO CGE:143 - Application Context given by IDE, already created and still alive
+18:48:30,176  INFO CGE:143 - Application Context given by IDE, already created and still alive
+18:48:34,433  INFO JettyLOG:32 - jetty-6.1.11
+18:48:34,490  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+18:48:34,706  INFO JettyLOG:32 - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+18:48:34,707  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+18:48:35,068 DEBUG DCFilter:139 - Loading deafult log init handler
+18:48:35,079 DEBUG DCFilter:143 - NDC Filter initialized
+18:48:35,310  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+18:48:35,351  INFO JettyLOG:32 - Started {}
+18:48:35,351  INFO JettyLOG:33 - SelectChannelConnector@0.0.0.0:8888
+18:48:35,369  INFO JettyLOG:32 - Started {}
+18:48:35,371  INFO JettyLOG:33 - SslSocketConnector@0.0.0.0:8443
+21:51:56,099  INFO JettyLOG:32 - Shutdown hook executing
+21:51:56,120  INFO JettyLOG:32 - Shutdown hook complete
+22:21:13,137  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:21:13,710  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:21:13,928  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:21:14,391  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:21:19,384  INFO JettyLOG:32 - jetty-6.1.11
+22:21:19,445  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+22:21:19,551  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+22:21:19,739  INFO JettyLOG:32 - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+22:21:19,740  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+22:21:20,105 DEBUG DCFilter:139 - Loading deafult log init handler
+22:21:20,124 DEBUG DCFilter:143 - NDC Filter initialized
+22:21:20,366  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+22:21:20,411  INFO JettyLOG:32 - Started {}
+22:21:20,411  INFO JettyLOG:33 - SelectChannelConnector@0.0.0.0:8888
+22:21:20,415  INFO JettyLOG:32 - Started {}
+22:21:20,416  INFO JettyLOG:33 - SslSocketConnector@0.0.0.0:8443
+22:28:13,542  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:28:13,828  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:28:13,994  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:39:33,269  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:39:33,383  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:47:29,196  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:47:29,482  INFO CGE:143 - Application Context given by IDE, already created and still alive
+23:08:11,044  INFO CGE:143 - Application Context given by IDE, already created and still alive
+23:08:11,295  INFO CGE:143 - Application Context given by IDE, already created and still alive
+23:08:11,412  INFO CGE:143 - Application Context given by IDE, already created and still alive
+23:08:11,578  INFO CGE:143 - Application Context given by IDE, already created and still alive
+23:22:28,020  INFO JettyLOG:32 - Shutdown hook executing
+23:22:28,045  INFO JettyLOG:32 - Shutdown hook complete
+21:09:05,652  INFO CGE:143 - Application Context given by IDE, already created and still alive
+21:09:06,092  INFO CGE:143 - Application Context given by IDE, already created and still alive
+21:09:06,440  INFO CGE:143 - Application Context given by IDE, already created and still alive
+22:02:19,942  INFO JettyLOG:32 - Shutdown hook executing
+22:02:19,971  INFO JettyLOG:32 - Shutdown hook complete
+10:16:09,501  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:16:10,035  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:16:10,203  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:16:10,598  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:16:10,901  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:16:11,216  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:16:11,398  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:16:16,820  INFO JettyLOG:32 - jetty-6.1.11
+10:16:16,902  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+10:16:17,053  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+10:16:17,182  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+10:16:17,371  INFO JettyLOG:32 - org.mortbay.jetty.plus.webapp.Configuration does not support annotations on source. Use org.mortbay.jetty.annotations.Configuration instead
+10:16:17,372  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+10:16:17,695 DEBUG DCFilter:139 - Loading deafult log init handler
+10:16:17,714 DEBUG DCFilter:143 - NDC Filter initialized
+10:16:17,950  INFO JettyLOG:32 - No Transaction manager found - if your webapp requires one, please configure one.
+10:16:17,993  INFO JettyLOG:32 - Started {}
+10:16:17,994  INFO JettyLOG:33 - SelectChannelConnector@0.0.0.0:8888
+10:16:17,996  INFO JettyLOG:32 - Started {}
+10:16:17,997  INFO JettyLOG:33 - SslSocketConnector@0.0.0.0:8443
+10:21:29,572  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:21:29,858  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:21:30,074  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:21:30,307  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:21:30,541  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:21:30,755  INFO CGE:143 - Application Context given by IDE, already created and still alive
+10:43:53,258  INFO JettyLOG:32 - Shutdown hook executing
+10:43:53,286  INFO JettyLOG:32 - Shutdown hook complete

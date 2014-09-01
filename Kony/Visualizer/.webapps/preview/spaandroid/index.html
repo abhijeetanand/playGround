@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+                 <meta name="format-detection" content="telephone=no" />
+                 <meta name="format-detection" content="address=no" />
+            <script type= "text/javascript">
+                    IndexJL = 0;
+            </script>
+            <script type="text/javascript"> 
+		    			if(document.getElementById && document.createElement){
+				document.write("<style>html {display: none;}</style><script>if( self == top ){document.documentElement.style.display = 'block';} else {top.location = self.location;}</sc"+"ript>");
+			}else{
+				if (top != self){
+					top.location = self.location;
+				}
+			}
+		    </script>
+            <style>
+				@-webkit-keyframes FadeIn { 0% { opacity:0; } 100% { opacity:1; } }
+               .splashscreen 
+               {
+                    position: fixed !important;
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    left: 0px;
+                    bottom: 0px;
+                    background-color: #ffffff;
+                }
+                .splashscreen2
+                {
+                    text-align: center;
+                }
+                .splashscreen-image 
+                {
+                    -webkit-animation-name: FadeIn;
+                    -webkit-animation-timing-function: ease-in;
+                    -webkit-animation-duration: 1.5s;
+				    width:100%;
+                    height:100%;
+                }
+           </style>
+            <script>
+                (function () 
+                {
+                    // load kony css
+                    var dpratio = window.devicePixelRatio;
+                    var category;
+                    if (dpratio <= 1) {
+                      category = 320;
+                    } else if(dpratio <= 1.5){
+                      category = 360;
+                    } else if(dpratio <= 2) {
+                      category = 400;
+                    } else if(dpratio>2){
+                      category = 440;
+                    }
+                    var filename = "spaandroid/konyspaandroid" + category + ".css?ver=1.0.0";
+                    var link = document.createElement("link");
+                    link.setAttribute("rel", "stylesheet");
+                    link.setAttribute("type", "text/css");
+                    link.setAttribute("href", filename);
+                    document.getElementsByTagName("head")[0].appendChild(link);
+                })();
+             </script>
+            <link rel="stylesheet" type="text/css" href="spaandroid/jslib/tparty/cal/container.css" />
+            <link rel="stylesheet" type="text/css" href="spaandroid/jslib/tparty/cal/calendar.css" />
+                <title>Project0b0cd6</title>
+    </head>
+    <body>
+        <!-- <noscript style="position:absolute;background:white;">To use this site, first enable your browser;kqt;s JavaScript support and then refresh this page.</noscript> -->
+    	<style>
+			#__JSDisabledErrorMsg{display:none;}
+		</style>
+		<noscript>
+			<style>
+				#__JSDisabledErrorMsg{display:block;}
+			</style>
+		</noscript>
+		<div id="__JSDisabledErrorMsg" style="position:absolute;background:white;">To use this site, first enable your browser;kqt;s JavaScript support and then refresh this page.</div>
+        <script type="text/javascript" >
+            IndexJL = 0;
+            function initappcache() {
+                            $KG["version"] = "1.0.0";
+                            kony.appinit.initappcache();
+                    }
+             var head = document.getElementsByTagName('head')[0]; 
+             var script = document.createElement('script');				
+             script.src = "spaandroid/jslib/konyinit.js";
+             script.onload = initappcache;
+             head.appendChild(script);
+        </script>
+    </body>
+</html>
